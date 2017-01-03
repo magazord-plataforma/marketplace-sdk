@@ -1,0 +1,25 @@
+{
+    "name": "magazord-plataforma/marketplace-sdk",
+    "description": "SDK de integração com a API do marketplace da plataforma Magazord",
+    "keywords": ["marketplace", "magazord", "magamobi"],
+    "type": "library",
+    "license": "MIT",    
+    "require-dev": {
+    },
+    "authors": [
+        {
+            "name": "Desenvolvimento Magazord",
+            "email": "webmaster@magazord.com.br"
+        }
+    ],    
+    "require": {
+        "php": ">=5.4.0",
+        "justinrainbow/json-schema": "~3.0",
+        "nategood/httpful": "0.2.20"
+    },
+    "autoload": {
+        "psr-0": {
+            "MagaMarketplace": "src/MagaMarketplace"
+        }
+    }
+}

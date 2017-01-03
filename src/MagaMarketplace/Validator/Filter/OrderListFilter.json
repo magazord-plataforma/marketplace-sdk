@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "OrderListFilter schema.",
+    "properties": {
+        "id": {
+            "type": "string"
+        },        
+        "siteId": {
+            "type": "string"
+        },
+        "dateCreated": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "status": {
+            "type": "string",
+            "enum": ["new", "approved", "shipped", "delivered", "canceled"]
+        },
+        "itemId": {
+            "type": "string"
+        },
+        "limit": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 50
+        },
+        "offset": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "sort": {
+            "type": "string",
+            "enum": ["id"]
+        }
+    },
+    "required": ["limit", "offset"]
+}

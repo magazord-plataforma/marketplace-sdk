@@ -1,0 +1,37 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "ItemListFilter schema.",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "productId": {
+            "type": "string"
+        },        
+        "brand": {
+            "type": "string"
+        },
+        "title": {
+            "type": "string"
+        },
+        "status": {
+            "type": "string",
+            "enum": [ "pending", "approved", "rejected", "selling"]
+        },
+        "limit": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+        },
+        "offset": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "sort": {
+            "type": "string",
+            "enum": [ "id", "title", "dateCreated"]
+        }
+    },
+    "required": ["limit", "offset"]
+}

@@ -1,0 +1,183 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "Item schema.",
+    "definitions": {
+        "Price": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "number",
+                    "description": "Preço \"de\"",
+                    "minimum": 0.01
+                },
+                "sale": {
+                    "type": "number",
+                    "description": "Preço \"por\". Preço real de venda",
+                    "minimum": 0.01
+                }
+            },
+            "required": ["sale"]
+        },
+        "Stock": {
+            "type": "object",
+            "properties": {
+                "quantity": {
+                    "type": "integer",
+                    "description": "Quantidade em estoque",
+                    "minimum": 0
+                }
+            },
+            "required": ["quantity"]
+        },
+        "Dimension": {
+            "type": "object",
+            "properties": {
+                "length": {
+                    "type": "number",
+                    "description": "Comprimento (cm)"
+                },
+                "width": {
+                    "type": "number",
+                    "description": "Largura (cm)"
+                },
+                "height": {
+                    "type": "number",
+                    "description": "Altura (cm)"
+                }
+            },
+            "required": []
+        },
+        "Attribute": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Nome",
+                    "maxLength": 50
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Valor",
+                    "maxLength": 500
+                }
+            },
+            "required": ["id", "value"]
+        },
+        "Variation": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Nome",
+                    "enum": ["Cor", "Tamanho", "Voltagem"]
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Valor",
+                    "maxLength": 500
+                }
+            },
+            "required": ["id", "value"]
+        }
+    },
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Identificador (único e que servirá de referência para consultas e alterações do item em questão)",
+            "maxLength": 22,
+            "pattern": "^[a-zA-Z0-9\\-_\\.]*$"
+        },
+        "productId": {
+            "type": "string",
+            "description": "Identificador Agrupador (para produtos com variação)",
+            "maxLength": 22,
+            "pattern": "^[a-zA-Z0-9\\-_\\.]*$"
+        },
+        "brand": {
+            "type": "string",
+            "description": "Marca",
+            "maxLength": 50
+        },
+        "title": {
+            "type": "string",
+            "description": "Título",
+            "maxLength": 100
+        },
+        "description": {
+            "type": "string",
+            "description": "Descrição detalhada. Pode conter tags de formatação HTML"
+        },
+        "category": {
+            "type": "string",
+            "description": "Categoria",
+            "maxLength": 100
+        },
+        "images": {
+            "type": "array",
+            "description": "Lista de URLs das imagens. É obrigatório pelo menos uma",
+            "items": {
+                "type": "string",
+                "format": "uri",
+                "maxLength": 255
+            },
+            "minItems": 1,
+            "uniqueItems": true
+        },
+        "videos": {
+            "type": "array",
+            "description": "Lista de URLs de vídeos",
+            "items": {
+                "type": "string",
+                "format": "uri",
+                "maxLength": 255
+            },
+            "uniqueItems": true
+        },
+        "ean": {
+            "type": "string",
+            "description": "EAN",
+            "maxLength": 13
+        },
+        "stock": {
+            "$ref": "#/definitions/Stock",
+            "description": "Quantidade disponível para venda"
+        },
+        "price": {
+            "$ref": "#/definitions/Price",
+            "description": "Preço"
+        },
+        "dimensions": {
+            "$ref": "#/definitions/Dimension",
+            "description": "Dimensões"
+        },
+        "weight": {
+            "type": "number",
+            "description": "Peso (gramas)"
+        },
+        "warranty": {
+            "type": "string",
+            "description": "Garantia",
+            "maxLength": 100
+        },
+        "variations": {
+            "type": "array",
+            "description": "Atributos de Variação",
+            "items": {
+                "$ref": "#/definitions/Variation"
+            }
+        },
+        "attributes": {
+            "type": "array",
+            "description": "Atributos de Características",
+            "items": {
+                "$ref": "#/definitions/Attribute"
+            }
+        },
+        "active": {
+            "type": "boolean",
+            "description": "Ativo"
+        }
+    },
+    "required": ["id", "productId", "brand", "title", "description", "category", "images", "stock", "price", "weight", "active"]
+}

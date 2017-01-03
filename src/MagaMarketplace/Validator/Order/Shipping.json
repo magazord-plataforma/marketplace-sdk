@@ -1,0 +1,91 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "definitions": {
+        "TrackingItem": {
+            "type": "object",
+            "properties": {
+                "itemId": {
+                    "type": "string",
+                    "description": "Identificador do anúncio"
+                },
+                "quantity": {
+                    "type": "integer",
+                    "description": "Quantidade",
+                    "minimum": 1
+                }
+            },
+            "required": ["itemId", "quantity"]
+        },
+        "Carrier": {
+            "type": "object",
+            "properties": {
+                "documentNumber": {
+                    "type": "string",
+                    "description": "CNPJ",
+                    "maxLength": 18
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Nome",
+                    "maxLength": 100
+                }
+            },
+            "required": ["name"]
+        },
+        "Invoice": {
+            "type": "object",
+            "properties": {
+                "number": {
+                    "type": "integer",
+                    "description": "Número",                    
+                    "maximum": 999999999
+                },
+                "line": {
+                    "type": "string",
+                    "description": "Série",
+                    "maxLength": 10
+                },
+                "issueDate": {
+                    "type": "string",
+                    "description": "Data/hora de emissão",
+                    "format": "date-time"
+                },
+                "accessKey": {
+                    "type": "string",
+                    "description": "Chave de acesso",
+                    "maxLength": 44
+                }
+            },
+            "required": ["number", "line", "issueDate", "accessKey"]
+        }
+    },
+    "properties": {
+        "items": {
+            "type": "array",
+            "description": "Lista dos itens",
+            "items": {
+                "$ref": "#/definitions/TrackingItem"
+            },
+            "minItems": 1
+        },
+        "eventDate": {
+            "type": "string",
+            "description": "Data/hora",
+            "format": "date-time"
+        },
+        "carrier": {
+            "$ref": "#/definitions/Carrier",
+            "description": "Transportadora"
+        },
+        "trackingNumber": {
+            "type": "string",
+            "description": "Código de rastreio na transportadora"
+        },
+        "invoice": {
+            "$ref": "#/definitions/Invoice",
+            "description": "Nota fiscal"
+        }
+    },
+    "required": ["items", "eventDate", "carrier", "trackingNumber", "invoice"]
+}

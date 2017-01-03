@@ -1,0 +1,251 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "definitions": {
+        "Telephone": {
+            "type": "object",
+            "properties": {
+                "number": {
+                    "type": "string",
+                    "description": "Número",
+                    "maxLength": 22
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Tipo",
+                    "enum": ["home", "cellphone", "business"]
+                }
+            },
+            "required": ["number"]
+        },
+        "Client": {
+            "type": "object",
+            "properties": {
+                "documentNumber": {
+                    "type": "string",
+                    "description": "CPF/CNPJ",
+                    "maxLength": 18
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Nome",
+                    "maxLength": 100
+                },
+                "phones": {
+                    "type": "array",
+                    "description": "Telefones de contato",
+                    "items": {
+                        "$ref": "#/definitions/Telephone"
+                    }
+                }
+            },
+            "required": ["documentNumber", "name"]
+        },
+        "ShippingAddress": {
+            "type": "object",
+            "properties": {
+                "addressType": {
+                    "type": "string",
+                    "description": "Tipo",
+                    "enum": ["commercial", "residential"]
+                },
+                "receiverName": {
+                    "type": "string",
+                    "description": "Responsável",
+                    "maxLength": 100
+                },
+                "receiverPhone": {
+                    "type": "string",
+                    "description": "Fone responsável",
+                    "maxLength": 22
+                },
+                "street": {
+                    "type": "string",
+                    "description": "Endereço",
+                    "maxLength": 250
+                },
+                "number": {
+                    "type": "string",
+                    "description": "Número",
+                    "maxLength": 15
+                },
+                "additionalInfo": {
+                    "type": "string",
+                    "description": "Complemento",
+                    "maxLength": 250
+                },
+                "neighborhood": {
+                    "type": "string",
+                    "description": "Bairro",
+                    "maxLength": 250
+                },
+                "city": {
+                    "type": "string",
+                    "description": "Cidade",
+                    "maxLength": 50
+                },
+                "zipcode": {
+                    "type": "integer",
+                    "description": "CEP",
+                    "maximum": 99999999
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Estado (sigla)",
+                    "maxLength": 2
+                },
+                "country": {
+                    "type": "string",
+                    "description": "País (sigla)",
+                    "maxLength": 2
+                }
+            },
+            "required": [
+                "addressType",
+                "receiverName",
+                "street",
+                "number",
+                "neighborhood",
+                "city",
+                "zipcode",
+                "state"
+            ]
+        },
+        "Link": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "rel": {
+                    "type": "string"
+                },
+                "href": {
+                    "type": "string"
+                }
+            },
+            "required": ["id"]
+        },
+        "OrderItem": {
+            "type": "object",
+            "properties": {
+                "item": {
+                    "$ref": "#/definitions/Link",
+                    "description": "Anúncio"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status",
+                    "enum": ["new", "approved", "shipped", "delivered", "canceled"]
+                },
+                "quantity": {
+                    "type": "integer",
+                    "description": "Quantidade",
+                    "minimum": 1
+                },
+                "price": {
+                    "type": "number",
+                    "description": "Preço unitário",
+                    "minimum": 0
+                },
+                "discount": {
+                    "type": "number",
+                    "description": "Descontos",
+                    "minimum": 0
+                },
+                "interest": {
+                    "type": "number",
+                    "description": "Acrescimos",
+                    "minimum": 0
+                },
+                "total": {
+                    "type": "number",
+                    "description": "Valor Total do Item = (Preço unitário  * Quantidade) - Desconto + Acrescimo",
+                    "minimum": 0
+                }
+            },
+            "required": [
+                "item",
+                "quantity",
+                "price",
+                "discount",
+                "interest",
+                "total"
+            ]
+        }
+    },
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Identificador",
+            "maxLength": 22
+        },
+        "siteId": {
+            "type": "string",
+            "description": "Número do pedido para o cliente",
+            "maxLength": 22
+        },
+        "store": {
+            "type": "string",
+            "description": "Loja do marketplace",
+            "maxLength": 18
+        },
+        "dateCreated": {
+            "type": "string",
+            "description": "Data/hora de criação",
+            "format": "date-time"
+        },
+        "client": {
+            "$ref": "#/definitions/Client",
+            "description": "Cliente"
+        },
+        "items": {
+            "type": "array",
+            "description": "Itens do Pedido",
+            "items": {
+                "$ref": "#/definitions/OrderItem"
+            },
+            "minItems": 1
+        },
+        "shippingAddress": {
+            "$ref": "#/definitions/ShippingAddress",
+            "description": "Endereço de entrega"
+        },
+        "estimatedDeliveryDate": {
+            "type": "string",
+            "description": "Data estimada de entrega",
+            "format": "date"
+        },
+        "shippingService": {
+            "type": "string",
+            "description": "Identificador da opção de envio",
+            "maxLength": 20
+        },
+        "freight": {
+            "type": "number",
+            "description": "Valor de frete",
+            "minimum": 0
+        },
+        "totalAmount": {
+            "type": "number",
+            "description": "Valor total",
+            "minimum": 0
+        },
+        "lastUpdate": {
+            "type": "string",
+            "description": "Data/hora última atualização",
+            "format": "date-time"
+        }
+    },
+    "required": [
+        "siteId",
+        "store",
+        "dateCreated",
+        "client",
+        "items",
+        "shippingAddress",
+        "shippingService",
+        "freight",
+        "totalAmount"
+    ]
+}

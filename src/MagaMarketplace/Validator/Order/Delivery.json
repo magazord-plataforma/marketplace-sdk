@@ -1,0 +1,37 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "definitions": {
+        "TrackingItem": {
+            "type": "object",
+            "properties": {
+                "itemId": {
+                    "type": "string",
+                    "description": "Identificador do anúncio"
+                },
+                "quantity": {
+                    "type": "integer",
+                    "description": "Quantidade",
+                    "minimum": 1
+                }
+            },
+            "required": ["itemId","quantity"]
+        }
+    },
+    "properties": {
+        "items": {
+            "type": "array",
+            "description": "Lista dos itens",
+            "items": {
+                "$ref": "#/definitions/TrackingItem"
+            },
+            "minItems": 1
+        },
+        "eventDate" : {
+            "type": "string",
+            "description": "Data/hora",
+            "format": "date-time"
+        }
+    },
+    "required": ["items","eventDate"]
+}

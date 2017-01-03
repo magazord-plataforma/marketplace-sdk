@@ -1,0 +1,16 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "Price schema.",
+    "properties": {
+        "default": {
+            "type": "number",
+            "minimum": 0.01
+        },
+        "sale": {
+            "type": "number",
+            "minimum": 0.01
+        }
+    },
+    "required": ["sale"]
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "Status schema.",
+    "properties": {
+        "status": {
+            "type": "string",
+            "enum": [ "pending", "approved", "rejected", "selling"]
+        },
+        "statusDescription": {
+            "type": "string"
+        }
+    },
+    "required": ["status"]
+}

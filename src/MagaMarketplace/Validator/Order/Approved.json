@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "definitions": {
+        "TrackingItem": {
+            "type": "object",
+            "properties": {
+                "itemId": {
+                    "type": "string"
+                },
+                "quantity": {
+                    "type": "integer",
+                    "minimum": 1
+                }
+            },
+            "required": ["itemId","quantity"]
+        }
+    },
+    "properties": {
+        "items": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/TrackingItem"
+            },
+            "minItems": 1
+        },
+        "eventDate" : {
+            "type": "string",
+            "format": "date-time"
+        }
+    },
+    "required": ["items","eventDate"]
+}
