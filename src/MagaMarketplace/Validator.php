@@ -42,6 +42,9 @@ class Validator
     {
         $dir = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Validator' . DIRECTORY_SEPARATOR;
         $class = str_replace(__NAMESPACE__ . '\\Domain\\', '', get_class($model));
+        if (DIRECTORY_SEPARATOR == '/') { // Linux
+            $class = str_replace('\\', '/', $class);
+        }        
         return $dir . $class . '.json';
     }
 
