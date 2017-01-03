@@ -18,8 +18,8 @@
         "nategood/httpful": "0.2.20"
     },
     "autoload": {
-        "psr-0": {
-            "MagaMarketplace": "src/MagaMarketplace"
+        "psr-4": {
+            "MagaMarketplace\\": "src/MagaMarketplace/"
         }
     }
 }
