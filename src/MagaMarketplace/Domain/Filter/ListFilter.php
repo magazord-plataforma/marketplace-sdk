@@ -12,6 +12,9 @@ use \MagaMarketplace\Domain;
 class ListFilter extends Domain\AbstractModel
 {
 
+    const SORT_DIRECTION_ASC = 'asc';
+    const SORT_DIRECTION_DESC = 'desc';
+
     /**
      * Quantidade de registros por pagina
      * @var int
@@ -30,6 +33,12 @@ class ListFilter extends Domain\AbstractModel
      */
     protected $sort;
 
+    /**
+     * Direção da ordenação dos registros (asc, desc)
+     * @var string
+     */
+    protected $sortDirection;
+
     public function getLimit()
     {
         return $this->defaultValue($this->limit, 50);
@@ -45,6 +54,11 @@ class ListFilter extends Domain\AbstractModel
         return $this->sort;
     }
 
+    public function getSortDirection()
+    {
+        return $this->sortDirection;
+    }
+
     public function setLimit($limit)
     {
         $this->limit = $this->intValue($limit);
@@ -58,6 +72,11 @@ class ListFilter extends Domain\AbstractModel
     public function setSort($sort)
     {
         $this->sort = $sort;
+    }
+
+    public function setSortDirection($sortDirection)
+    {
+        $this->sortDirection = $sortDirection;
     }
 
 }

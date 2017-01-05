@@ -4,34 +4,47 @@
     "title": "ItemListFilter schema.",
     "properties": {
         "id": {
-            "type": "string"
+            "type": "string",
+            "description": "Identificador"
         },
         "productId": {
-            "type": "string"
+            "type": "string",
+            "description": "Identificador Agrupador (para produtos com variação)"
         },        
         "brand": {
-            "type": "string"
+            "type": "string",
+            "description": "Marca"
         },
         "title": {
-            "type": "string"
+            "type": "string",
+            "description": "Título"
         },
         "status": {
             "type": "string",
+            "description": "Status",
             "enum": [ "pending", "approved", "rejected", "selling"]
         },
         "limit": {
             "type": "integer",
+            "description": "Quantidade de registros. Padrão: 50",
             "minimum": 0,
             "maximum": 100
         },
         "offset": {
             "type": "integer",
+            "description": "Posição inicial da consulta. Padrão: 0",
             "minimum": 0
         },
         "sort": {
             "type": "string",
+            "description": "Ordenação dos registros",
             "enum": [ "id", "title", "dateCreated"]
-        }
+        },
+        "sortDirection": {
+            "type": "string",
+            "description": "Direção da ordenação dos registros",
+            "enum": [ "asc", "desc"]
+        }        
     },
     "required": ["limit", "offset"]
 }

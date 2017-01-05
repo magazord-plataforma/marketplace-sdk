@@ -4,34 +4,56 @@
     "title": "OrderListFilter schema.",
     "properties": {
         "id": {
-            "type": "string"
-        },        
+            "type": "string",
+            "description": "Identificador"
+        },
         "siteId": {
-            "type": "string"
+            "type": "string",
+            "description": "Número do pedido para o cliente"
         },
         "dateCreated": {
             "type": "string",
+            "description": "Data/hora de criação inicial",
+            "format": "date-time"
+        },
+        "clientName": {
+            "type": "string",
+            "description": "Nome do cliente"
+        },        
+        "lastUpdate": {
+            "type": "string",
+            "description": "Data/hora última atualização inicial",
             "format": "date-time"
         },
         "status": {
             "type": "string",
+            "description": "Status",
             "enum": ["new", "approved", "shipped", "delivered", "canceled"]
         },
         "itemId": {
-            "type": "string"
+            "type": "string",
+            "description": "Identificador Anúncio"
         },
         "limit": {
             "type": "integer",
+            "description": "Quantidade de registros. Padrão: 50",
             "minimum": 0,
             "maximum": 50
         },
         "offset": {
             "type": "integer",
+            "description": "Posição inicial da consulta. Padrão: 0",
             "minimum": 0
         },
         "sort": {
             "type": "string",
-            "enum": ["id"]
+            "description": "Ordenação dos registros",
+            "enum": ["id", "dateCreated", "lastUpdate"]
+        },
+        "sortDirection": {
+            "type": "string",
+            "description": "Direção da ordenação dos registros",
+            "enum": ["asc", "desc"]
         }
     },
     "required": ["limit", "offset"]

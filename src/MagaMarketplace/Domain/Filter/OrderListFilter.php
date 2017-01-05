@@ -3,12 +3,16 @@
 namespace MagaMarketplace\Domain\Filter;
 
 /**
- * Filtro da Consulta de Pedidos - GET /items/{id}
+ * Filtro da Consulta de Pedidos - GET /orders
  *
  * @author Maicon Sasse
  */
 class OrderListFilter extends ListFilter
 {
+
+    const SORT_ID = 'id';
+    const SORT_DATE_CREATED = 'dateCreated';
+    const SORT_LAST_UPDATE = 'lastUpdate';
 
     /**
      * Identificador
@@ -27,6 +31,18 @@ class OrderListFilter extends ListFilter
      * @var string
      */
     protected $dateCreated;
+
+    /**
+     * Nome do cliente
+     * @var string
+     */
+    protected $clientName;
+
+    /**
+     * Data/hora última atualização. Formato: YYYY-MM-DDThh:mm:ss.TZD
+     * @var string
+     */
+    protected $lastUpdate;
 
     /**
      * Status. (new, approved, shipped, delivered, canceled)
@@ -55,6 +71,16 @@ class OrderListFilter extends ListFilter
         return $this->dateCreated;
     }
 
+    public function getClientName()
+    {
+        return $this->clientName;
+    }
+
+    public function getLastUpdate()
+    {
+        return $this->lastUpdate;
+    }
+
     public function getStatus()
     {
         return $this->status;
@@ -78,6 +104,16 @@ class OrderListFilter extends ListFilter
     public function setDateCreated($dateCreated)
     {
         $this->dateCreated = $dateCreated;
+    }
+
+    public function setClientName($clientName)
+    {
+        $this->clientName = $clientName;
+    }
+
+    public function setLastUpdate($lastUpdate)
+    {
+        $this->lastUpdate = $lastUpdate;
     }
 
     public function setStatus($status)
