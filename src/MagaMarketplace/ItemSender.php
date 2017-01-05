@@ -105,7 +105,7 @@ class ItemSender extends AbstractSender
     }
 
     /**
-     * Atualização do Estoque do anúncio
+     * Atualização do Estoque do anúncio (baseado no estoque total)
      * @param string $id
      * @param \MagaMarketplace\Domain\Item\Stock $stock
      * @return Domain\AbstractModel|Domain\Error
@@ -116,6 +116,21 @@ class ItemSender extends AbstractSender
         $this->setMethod(self::METHOD_PUT);
         $this->setResponse(new Domain\AbstractModel);
         return $this->send('/items/' . $id . '/stock', $stock);
+    }
+
+    /**
+     * Versão alternativa de putStock
+     * Atualização do Estoque do anúncio (baseado no estoque disponível)
+     * @param string $id
+     * @param \MagaMarketplace\Domain\Item\StockAvailable $stock
+     * @return Domain\AbstractModel|Domain\Error
+     */
+    public function putStockAvailable($id, Domain\Item\StockAvailable $stock)
+    {
+        $this->reset();
+        $this->setMethod(self::METHOD_PUT);
+        $this->setResponse(new Domain\AbstractModel);
+        return $this->send('/items/' . $id . '/stockAvailable', $stock);
     }
 
     /**
