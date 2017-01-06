@@ -22,6 +22,12 @@ class ItemResponse extends Item
     protected $idMarketplace;
 
     /**
+     * Código do Lojista
+     * @var int
+     */
+    protected $sellerId;
+
+    /**
      * Status. (pending, approved, rejected, selling)
      * @var string
      */
@@ -50,6 +56,11 @@ class ItemResponse extends Item
         return $this->idMarketplace;
     }
 
+    public function getSellerId()
+    {
+        return $this->sellerId;
+    }
+
     public function getStatus()
     {
         return $this->status;
@@ -73,6 +84,11 @@ class ItemResponse extends Item
     public function setIdMarketplace($idMarketplace)
     {
         $this->idMarketplace = $this->stringValue($idMarketplace);
+    }
+
+    public function setSellerId($sellerId)
+    {
+        $this->sellerId = $this->intValue($sellerId);
     }
 
     public function setStatus($status)

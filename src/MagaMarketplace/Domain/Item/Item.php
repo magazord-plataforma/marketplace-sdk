@@ -25,12 +25,6 @@ class Item extends Domain\AbstractModel
     protected $productId;
 
     /**
-     * Código do Lojista
-     * @var int
-     */
-    protected $sellerId;
-
-    /**
      * Marca
      * @var string
      */
@@ -142,11 +136,6 @@ class Item extends Domain\AbstractModel
         return $this->productId;
     }
 
-    public function getSellerId()
-    {
-        return $this->sellerId;
-    }
-
     public function getBrand()
     {
         return $this->brand;
@@ -254,11 +243,6 @@ class Item extends Domain\AbstractModel
     public function setProductId($productId)
     {
         $this->productId = $this->stringValue($productId);
-    }
-
-    public function setSellerId($sellerId)
-    {
-        $this->sellerId = $this->intValue($sellerId);
     }
 
     public function setBrand($brand)
