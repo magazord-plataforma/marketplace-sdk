@@ -46,7 +46,7 @@
                     "description": "Altura (cm)"
                 }
             },
-            "required": []
+            "required": ["length", "width", "height"]
         },
         "Attribute": {
             "type": "object",
@@ -179,5 +179,5 @@
             "description": "Ativo"
         }
     },
-    "required": ["id", "productId", "brand", "title", "description", "category", "images", "stock", "price", "weight", "active"]
+    "required": ["id", "productId", "brand", "title", "description", "category", "images", "stock", "price", "dimensions", "weight", "warranty", "active"]
 }

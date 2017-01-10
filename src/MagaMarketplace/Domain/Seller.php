@@ -34,6 +34,12 @@ class Seller extends AbstractModel
      */
     protected $notificationCallback;
 
+    /**
+     * Ean obrigatório?
+     * @var bool
+     */
+    protected $eanRequired;
+
     public function getId()
     {
         return $this->id;
@@ -54,6 +60,11 @@ class Seller extends AbstractModel
         return $this->notificationCallback;
     }
 
+    public function getEanRequired()
+    {
+        return $this->eanRequired;
+    }
+
     public function setId($id)
     {
         $this->id = $this->intValue($id);
@@ -72,6 +83,11 @@ class Seller extends AbstractModel
     public function setNotificationCallback($notificationCallback)
     {
         $this->notificationCallback = $notificationCallback;
+    }
+
+    public function setEanRequired($eanRequired)
+    {
+        $this->eanRequired = $this->boolValue($eanRequired);
     }
 
 }
