@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "beginDate": {
+            "type": "string",
+            "description": "Data/hora inicial",
+            "format": "date-time"
+        },
+        "endDate": {
+            "type": "string",
+            "description": "Data/hora final",
+            "format": "date-time"
+        },
+        "limit": {
+            "type": "integer",
+            "description": "Quantidade de registros. Padrão: 50",
+            "minimum": 0,
+            "maximum": 50
+        },
+        "offset": {
+            "type": "integer",
+            "description": "Posição inicial da consulta. Padrão: 0",
+            "minimum": 0
+        },
+        "sort": {
+            "type": "string",
+            "description": "Ordenação dos registros",
+            "enum": ["quantity", "totalAmount"]
+        },
+        "sortDirection": {
+            "type": "string",
+            "description": "Direção da ordenação dos registros",
+            "enum": ["asc", "desc"]
+        }
+    },
+    "required": ["limit", "offset"]
+}
