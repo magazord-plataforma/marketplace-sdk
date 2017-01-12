@@ -31,6 +31,12 @@ class Link extends AbstractModel
      */
     protected $href;
 
+    /**
+     * Descrição do recurso
+     * @var string
+     */
+    protected $description;
+
     public function getId()
     {
         return $this->id;
@@ -46,6 +52,11 @@ class Link extends AbstractModel
         return $this->href;
     }
 
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
     public function setId($id)
     {
         $this->id = $this->stringValue($id);
@@ -59,6 +70,11 @@ class Link extends AbstractModel
     public function setHref($href)
     {
         $this->href = $href;
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = $description;
     }
 
     static public function itemsLink($id)

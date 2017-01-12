@@ -115,14 +115,21 @@
             "type": "object",
             "properties": {
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Identificador do recurso"
                 },
                 "rel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Tipo do recurso: items, orders"
                 },
                 "href": {
-                    "type": "string"
-                }
+                    "type": "string",
+                    "description": "Link para acessar o recurso"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Descrição do recurso"
+                }                
             },
             "required": ["id"]
         },
