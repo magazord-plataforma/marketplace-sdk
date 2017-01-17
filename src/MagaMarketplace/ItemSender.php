@@ -64,6 +64,19 @@ class ItemSender extends AbstractSender
     }
 
     /**
+     * Exclusão do anúncio
+     * @param string $id
+     * @return Domain\AbstractModel|Domain\Error
+     */
+    public function delete($id)
+    {
+        $this->reset();
+        $this->setMethod(self::METHOD_DELETE);
+        $this->setResponse(new Domain\AbstractModel());
+        return $this->send('/items/' . $id);
+    }
+
+    /**
      * Atualização status do anúncio (ADM)
      * @param string $id
      * @param Domain\Item\Status $status

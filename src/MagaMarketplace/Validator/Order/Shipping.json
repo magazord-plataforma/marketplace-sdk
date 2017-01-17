@@ -38,7 +38,8 @@
             "properties": {
                 "number": {
                     "type": "integer",
-                    "description": "Número",                    
+                    "description": "Número",  
+                    "minimum": 1,
                     "maximum": 999999999
                 },
                 "line": {
@@ -54,7 +55,9 @@
                 "accessKey": {
                     "type": "string",
                     "description": "Chave de acesso",
-                    "maxLength": 44
+                    "minLength": 44,
+                    "maxLength": 44,
+                    "pattern": "^\\d{44}$"
                 }
             },
             "required": ["number", "line", "issueDate", "accessKey"]

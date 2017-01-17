@@ -19,8 +19,8 @@ class TrackingUpdateList extends Domain\AbstractModel
     protected $changes;
 
     /**
-     * Erro ocorrido durante a atualização
-     * @var Domain\Error
+     * Erros ocorridos durante a atualização
+     * @var Domain\Error[]
      */
     protected $error;
 
@@ -58,9 +58,16 @@ class TrackingUpdateList extends Domain\AbstractModel
         return $this->error;
     }
 
-    public function setError(Domain\Error $error = null)
+    public function setError(array $error = null)
     {
         $this->error = $error;
+    }
+
+    public function addError(Domain\Error $error)
+    {
+        $list = ($this->getError()) ? $this->getError() : array();
+        $list[] = $error;
+        $this->setError($list);
     }
 
 }
