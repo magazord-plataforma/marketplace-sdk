@@ -88,6 +88,10 @@
         "invoice": {
             "$ref": "#/definitions/Invoice",
             "description": "Nota fiscal"
+        },
+        "changeStock" : {
+            "type": "boolean",
+            "description": "Identifica se a saída do estoque dos itens relacionados ao tracking será feita automaticamente"
         }
     },
     "required": ["items", "eventDate", "carrier", "trackingNumber", "invoice"]

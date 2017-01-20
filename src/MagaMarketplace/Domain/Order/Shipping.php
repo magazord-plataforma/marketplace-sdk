@@ -31,6 +31,12 @@ class Shipping extends Tracking
     protected $invoice;
 
     /**
+     * Identifica se a saída do estoque dos itens relacionados ao tracking será feita automaticamente
+     * @var bool
+     */
+    protected $changeStock;
+
+    /**
      * Mapeamento de propriedades que sao objetos ou arrays
      * @var array
      */
@@ -60,6 +66,11 @@ class Shipping extends Tracking
         return $this->invoice;
     }
 
+    public function getChangeStock()
+    {
+        return $this->changeStock;
+    }
+
     public function setCarrier(Carrier $carrier = null)
     {
         $this->carrier = $carrier;
@@ -73,6 +84,11 @@ class Shipping extends Tracking
     public function setInvoice(Invoice $invoice = null)
     {
         $this->invoice = $invoice;
+    }
+
+    public function setChangeStock($changeStock)
+    {
+        $this->changeStock = $this->boolValue($changeStock);
     }
 
 }
