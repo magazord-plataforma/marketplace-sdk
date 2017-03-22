@@ -14,7 +14,7 @@ class ShippingService extends Domain\AbstractModel
 
     /**
      * Identificador
-     * @var string
+     * @var integer
      */
     protected $id;
 
@@ -31,10 +31,10 @@ class ShippingService extends Domain\AbstractModel
     protected $price;
 
     /**
-     * Data estimada de entrega
-     * @var string
+     * Prazo de entrega (dias úteis)
+     * @var integer
      */
-    protected $estimatedDeliveryDate;
+    protected $deliveryTime;
 
     public function getId()
     {
@@ -51,14 +51,14 @@ class ShippingService extends Domain\AbstractModel
         return $this->price;
     }
 
-    public function getEstimatedDeliveryDate()
+    public function getDeliveryTime()
     {
-        return $this->estimatedDeliveryDate;
+        return $this->deliveryTime;
     }
 
     public function setId($id)
     {
-        $this->id = $id;
+        $this->id = $this->intValue($id);
     }
 
     public function setName($name)
@@ -68,12 +68,12 @@ class ShippingService extends Domain\AbstractModel
 
     public function setPrice($price)
     {
-        $this->price = $price;
+        $this->price = $this->floatValue($price);
     }
 
-    public function setEstimatedDeliveryDate($estimatedDeliveryDate)
+    public function setDeliveryTime($deliveryTime)
     {
-        $this->estimatedDeliveryDate = $estimatedDeliveryDate;
+        $this->deliveryTime = $this->intValue($deliveryTime);
     }
 
 }

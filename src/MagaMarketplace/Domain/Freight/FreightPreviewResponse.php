@@ -16,13 +16,7 @@ class FreightPreviewResponse extends Domain\AbstractModel
      * CEP
      * @var integer
      */
-    protected $zipcode;
-
-    /**
-     * Lista dos itens
-     * @var FreightPreviewItemResponse[]
-     */
-    protected $items;
+    protected $zipCode;
 
     /**
      * Opções de envio
@@ -30,14 +24,17 @@ class FreightPreviewResponse extends Domain\AbstractModel
      */
     protected $shippingServices;
 
-    public function getZipcode()
-    {
-        return $this->zipcode;
-    }
+    /**
+     * Mapeamento de propriedades que sao objetos ou arrays
+     * @var array
+     */
+    protected $_mapper = array(
+        'shippingServices' => '\\MagaMarketplace\\Domain\\Freight\\ShippingService'
+    );
 
-    public function getItems()
+    public function getZipCode()
     {
-        return $this->items;
+        return $this->zipCode;
     }
 
     public function getShippingServices()
@@ -45,19 +42,29 @@ class FreightPreviewResponse extends Domain\AbstractModel
         return $this->shippingServices;
     }
 
-    public function setZipcode($zipcode)
+    public function setZipCode($zipCode)
     {
-        $this->zipcode = $zipcode;
-    }
-
-    public function setItems(array $items = null)
-    {
-        $this->items = $items;
+        $this->zipCode = $this->intValue($zipCode);
     }
 
     public function setShippingServices(array $shippingServices = null)
     {
         $this->shippingServices = $shippingServices;
+    }
+
+    public function addShippingService(ShippingService $service)
+    {
+        $services = ($this->getShippingServices()) ? $this->getShippingServices() : array();
+        if ($services) {
+            // Verificar se o serviço já existe, se existir não adiciona
+            foreach ($services as $serviceExists) {
+                if ($serviceExists->getId() == $service->getId()) {
+                    return;
+                }
+            }
+        }
+        $services[] = $service;
+        $this->setShippingServices($services);
     }
 
 }

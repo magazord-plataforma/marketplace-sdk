@@ -1,0 +1,56 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "definitions": {
+        "Link": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "rel": {
+                    "type": "string"
+                },
+                "href": {
+                    "type": "string"
+                }
+            },
+            "required": ["id"]
+        },
+        "FreightPreviewItem": {
+            "type": "object",
+            "properties": {
+                "item": {
+                    "$ref": "#/definitions/Link",
+                    "description": "Anúncio"
+                },
+                "quantity": {
+                    "type": "integer",
+                    "description": "Quantidade",
+                    "minimum": 1
+                }
+            },
+            "required": [
+                "item",
+                "quantity"
+            ]
+        }
+    },
+    "properties": {
+        "zipCode": {
+            "type": "integer",
+            "description": "CEP"
+        },
+        "items": {
+            "type": "array",
+            "description": "Itens",
+            "items": {
+                "$ref": "#/definitions/FreightPreviewItem"
+            },
+            "minItems": 1
+        }
+    },
+    "required": [
+        "zipCode", "items"
+    ]
+}

@@ -16,7 +16,7 @@ class FreightPreview extends Domain\AbstractModel
      * CEP
      * @var integer
      */
-    protected $zipcode;
+    protected $zipCode;
 
     /**
      * Lista dos itens
@@ -24,9 +24,17 @@ class FreightPreview extends Domain\AbstractModel
      */
     protected $items;
 
-    public function getZipcode()
+    /**
+     * Mapeamento de propriedades que sao objetos ou arrays
+     * @var array
+     */
+    protected $_mapper = array(
+        'items' => '\\MagaMarketplace\\Domain\\Freight\\FreightPreviewItem'
+    );
+
+    public function getZipCode()
     {
-        return $this->zipcode;
+        return $this->zipCode;
     }
 
     public function getItems()
@@ -34,9 +42,9 @@ class FreightPreview extends Domain\AbstractModel
         return $this->items;
     }
 
-    public function setZipcode($zipcode)
+    public function setZipCode($zipCode)
     {
-        $this->zipcode = $zipcode;
+        $this->zipCode = $this->intValue($zipCode);
     }
 
     public function setItems(array $items = null)

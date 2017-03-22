@@ -173,7 +173,9 @@ class AbstractModel
 
     protected function stringValue($value)
     {
-        if ($value !== null) {
+        if ($value === '') {
+            return null;
+        } else if ($value !== null) {
             return (string) $value;
         }
         return $value;
