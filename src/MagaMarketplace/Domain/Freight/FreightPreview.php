@@ -52,4 +52,14 @@ class FreightPreview extends Domain\AbstractModel
         $this->items = $items;
     }
 
+    public function addItem($itemId, $quantity)
+    {
+        $items = ($this->getItems()) ? $this->getItems() : array();
+        $item = new FreightPreviewItem();
+        $item->setItem(Domain\Link::itemsLink($itemId));
+        $item->setQuantity($quantity);
+        $items[] = $item;
+        $this->setItems($items);
+    }
+
 }

@@ -39,7 +39,9 @@
     "properties": {
         "zipCode": {
             "type": "integer",
-            "description": "CEP"
+            "description": "CEP",
+            "minimum": 0,
+            "maximum": 99999999
         },
         "items": {
             "type": "array",
