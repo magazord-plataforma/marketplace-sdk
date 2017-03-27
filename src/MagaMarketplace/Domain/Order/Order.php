@@ -149,9 +149,11 @@ class Order extends Domain\AbstractModel
             // Status movido para os itens em 10/2016
             $status = array();
             foreach ($this->getItems() as $orderItem) {
-                $status[] = $orderItem->getStatus();
+                if (!in_array($orderItem->getStatus(), $status)) {
+                    $status[] = $orderItem->getStatus();
+                }
             }
-            $this->setStatus(array_unique($status));
+            $this->setStatus($status);
         }
         return $this->status;
     }
