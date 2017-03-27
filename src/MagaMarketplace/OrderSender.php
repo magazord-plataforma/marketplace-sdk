@@ -39,13 +39,13 @@ class OrderSender extends AbstractSender
     /**
      * Consulta de pedido por id
      * @param string $id
-     * @return Domain\Order\Order|Domain\Error
+     * @return Domain\Order\OrderResponse|Domain\Error
      */
     public function get($id)
     {
         $this->reset();
         $this->setMethod(self::METHOD_GET);
-        $this->setResponse(new Domain\Order\Order());
+        $this->setResponse(new Domain\Order\OrderResponse());
         return $this->send('/orders/' . $id);
     }
 

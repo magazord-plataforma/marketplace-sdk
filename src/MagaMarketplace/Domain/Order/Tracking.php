@@ -37,6 +37,24 @@ abstract class Tracking extends Domain\AbstractModel
         return $this->items;
     }
 
+    /**
+     * Retorna uma forma textual dos itens do tracking
+     * @return string
+     */
+    public function getItemsDescription()
+    {
+        $descr = '';
+        if ($this->getItems()) {
+            foreach ($this->getItems() as $trackItem) {
+                if ($descr) {
+                    $descr .= '; ';
+                }
+                $descr .= $trackItem->getQuantity() . ' x ' . $trackItem->getItemId();
+            }
+        }
+        return $descr;
+    }
+
     abstract public function getStatus();
 
     public function getEventDate()

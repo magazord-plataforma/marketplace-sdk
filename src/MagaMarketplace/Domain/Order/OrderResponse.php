@@ -16,6 +16,17 @@ class OrderResponse extends Order
      */
     protected $tracking;
 
+    /**
+     * Mapeamento de propriedades que sao objetos ou arrays
+     * @var array
+     */
+    protected $_mapper = array(
+        'client' => '\\MagaMarketplace\\Domain\\Order\\Client',
+        'items' => '\\MagaMarketplace\\Domain\\Order\\OrderItem',
+        'shippingAddress' => '\\MagaMarketplace\\Domain\\Order\\ShippingAddress',
+        'tracking' => '\\MagaMarketplace\\Domain\\Order\\TrackingResponse'
+    );
+
     public function getTracking()
     {
         return $this->tracking;
