@@ -37,7 +37,12 @@
                     "items": {
                         "$ref": "#/definitions/Telephone"
                     }
-                }
+                },
+                "birthDate": {
+                    "type": "string",
+                    "description": "Data de nascimento",
+                    "format": "date"
+                }                
             },
             "required": ["documentNumber", "name"]
         },

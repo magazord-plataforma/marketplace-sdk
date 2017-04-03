@@ -150,7 +150,11 @@ class AbstractModel
     protected function boolValue($value)
     {
         if ($value !== null) {
-            return ($value) ? true : false;
+            if ($value === 'false') {
+                return false;
+            } else {
+                return ($value) ? true : false;
+            }
         }
         return $value;
     }

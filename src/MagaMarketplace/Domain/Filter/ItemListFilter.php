@@ -13,6 +13,8 @@ class ItemListFilter extends ListFilter
     const SORT_ID = 'id';
     const SORT_TITLE = 'title';
     const SORT_DATE = 'dateCreated';
+    const SORT_STOCK_QUANTITY = 'stock.quantity';
+    const SORT_STOCK_AVAILABLE = 'stock.available';
 
     /**
      * Identificador
@@ -44,6 +46,12 @@ class ItemListFilter extends ListFilter
      */
     protected $status;
 
+    /**
+     * Possui estoque?
+     * @var boolean
+     */
+    protected $hasStock;
+
     public function getId()
     {
         return $this->id;
@@ -69,6 +77,11 @@ class ItemListFilter extends ListFilter
         return $this->status;
     }
 
+    public function getHasStock()
+    {
+        return $this->hasStock;
+    }
+
     public function setId($id)
     {
         $this->id = $id;
@@ -92,6 +105,11 @@ class ItemListFilter extends ListFilter
     public function setStatus($status)
     {
         $this->status = $status;
+    }
+
+    public function setHasStock($hasStock)
+    {
+        $this->hasStock = $this->boolValue($hasStock);
     }
 
 }

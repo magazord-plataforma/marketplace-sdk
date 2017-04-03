@@ -31,6 +31,12 @@ class Client extends Domain\AbstractModel
     protected $phones;
 
     /**
+     * Data de nascimento. Formato: YYYY-MM-DD
+     * @var string
+     */
+    protected $birthDate;
+
+    /**
      * Mapeamento de propriedades que sao objetos ou arrays
      * @var array
      */
@@ -51,6 +57,11 @@ class Client extends Domain\AbstractModel
     public function getPhones()
     {
         return $this->phones;
+    }
+
+    public function getBirthDate()
+    {
+        return $this->birthDate;
     }
 
     public function setDocumentNumber($documentNumber)
@@ -76,6 +87,11 @@ class Client extends Domain\AbstractModel
         $tel->setType($type);
         $phones[] = $tel;
         $this->setPhones($phones);
+    }
+
+    public function setBirthDate($birthDate)
+    {
+        $this->birthDate = $birthDate;
     }
 
 }

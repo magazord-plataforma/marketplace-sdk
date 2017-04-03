@@ -10,7 +10,7 @@
         "productId": {
             "type": "string",
             "description": "Identificador Agrupador (para produtos com variação)"
-        },        
+        },
         "brand": {
             "type": "string",
             "description": "Marca"
@@ -22,7 +22,11 @@
         "status": {
             "type": "string",
             "description": "Status",
-            "enum": [ "pending", "approved", "rejected", "selling"]
+            "enum": ["pending", "approved", "rejected", "selling"]
+        },
+        "hasStock": {
+            "type": "boolean",
+            "description": "Possui estoque?"
         },
         "limit": {
             "type": "integer",
@@ -38,13 +42,13 @@
         "sort": {
             "type": "string",
             "description": "Ordenação dos registros",
-            "enum": [ "id", "title", "dateCreated"]
+            "enum": ["id", "title", "dateCreated", "stock.quantity", "stock.available"]
         },
         "sortDirection": {
             "type": "string",
             "description": "Direção da ordenação dos registros",
-            "enum": [ "asc", "desc"]
-        }        
+            "enum": ["asc", "desc"]
+        }
     },
     "required": ["limit", "offset"]
 }
