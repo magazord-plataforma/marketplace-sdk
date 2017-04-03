@@ -202,7 +202,7 @@ class AbstractModel
     {
         if ($date) {
             if (strlen($date) == 10) {
-                $date .= 'T00:00:00';
+                $date .= 'T00:00:00-03:00';
             }
             return \DateTime::createFromFormat(self::FORMAT_TIMESTAMP, $date);
         }
