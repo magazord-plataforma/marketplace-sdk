@@ -52,6 +52,12 @@ class ItemListFilter extends ListFilter
      */
     protected $hasStock;
 
+    /**
+     * Data/hora de criação inicial
+     * @var string
+     */
+    protected $dateCreated;
+
     public function getId()
     {
         return $this->id;
@@ -82,6 +88,11 @@ class ItemListFilter extends ListFilter
         return $this->hasStock;
     }
 
+    public function getDateCreated()
+    {
+        return $this->dateCreated;
+    }
+
     public function setId($id)
     {
         $this->id = $id;
@@ -110,6 +121,11 @@ class ItemListFilter extends ListFilter
     public function setHasStock($hasStock)
     {
         $this->hasStock = $this->boolValue($hasStock);
+    }
+
+    public function setDateCreated($dateCreated)
+    {
+        $this->dateCreated = $dateCreated;
     }
 
 }

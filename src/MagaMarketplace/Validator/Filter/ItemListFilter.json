@@ -28,6 +28,11 @@
             "type": "boolean",
             "description": "Possui estoque?"
         },
+        "dateCreated": {
+            "type": "string",
+            "description": "Data/hora de criação inicial",
+            "format": "date-time"
+        },        
         "limit": {
             "type": "integer",
             "description": "Quantidade de registros. Padrão: 50",
