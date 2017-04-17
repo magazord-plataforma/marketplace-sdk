@@ -106,6 +106,20 @@ class OrderSender extends AbstractSender
     }
 
     /**
+     * Atualização status do pedido para devolvido (ADM)
+     * @param string $id
+     * @param Domain\Order\Returned $tracking
+     * @return Domain\AbstractModel|Domain\Error
+     */
+    public function putReturned($id, Domain\Order\Returned $tracking)
+    {
+        $this->reset();
+        $this->setMethod(self::METHOD_PUT);
+        $this->setResponse(new Domain\AbstractModel());
+        return $this->send('/orders/' . $id . '/returned', $tracking);
+    }
+
+    /**
      * Atualização status do pedido conforme $tracking
      * @param string $id
      * @param Domain\Order\Tracking $tracking
@@ -113,14 +127,17 @@ class OrderSender extends AbstractSender
      */
     public function putStatus($id, Domain\Order\Tracking $tracking)
     {
-        if ($tracking instanceof Domain\Order\Approved) {
-            return $this->putApproved($id, $tracking);
-        } else if ($tracking instanceof Domain\Order\Canceled) {
-            return $this->putCanceled($id, $tracking);
-        } else if ($tracking instanceof Domain\Order\Shipping) {
-            return $this->putShipped($id, $tracking);
-        } else if ($tracking instanceof Domain\Order\Delivery) {
-            return $this->putDelivered($id, $tracking);
+        switch ($tracking->getStatus()) {
+            case Domain\Order\Order::STATUS_APPROVED:
+                return $this->putApproved($id, $tracking);
+            case Domain\Order\Order::STATUS_CANCELED:
+                return $this->putCanceled($id, $tracking);
+            case Domain\Order\Order::STATUS_SHIPPED:
+                return $this->putShipped($id, $tracking);
+            case Domain\Order\Order::STATUS_DELIVERED:
+                return $this->putDelivered($id, $tracking);
+            case Domain\Order\Order::STATUS_RETURNED:
+                return $this->putReturned($id, $tracking);
         }
     }
 

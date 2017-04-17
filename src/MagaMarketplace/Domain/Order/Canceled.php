@@ -30,7 +30,7 @@ class Canceled extends Tracking
 
     public function setReason($reason)
     {
-        $this->reason = $reason;
+        $this->reason = $this->stringValue($reason);
     }
 
 }

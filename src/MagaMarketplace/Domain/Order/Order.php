@@ -17,6 +17,7 @@ class Order extends Domain\AbstractModel
     const STATUS_SHIPPED = 'shipped';
     const STATUS_DELIVERED = 'delivered';
     const STATUS_CANCELED = 'canceled';
+    const STATUS_RETURNED = 'returned';
 
     /**
      * Identificador
@@ -113,10 +114,11 @@ class Order extends Domain\AbstractModel
      */
     static public $_statusFlow = array(
         self::STATUS_NEW => array(self::STATUS_APPROVED, self::STATUS_CANCELED),
-        self::STATUS_APPROVED => array(self::STATUS_SHIPPED, self::STATUS_CANCELED),
-        self::STATUS_SHIPPED => array(self::STATUS_DELIVERED),
-        self::STATUS_DELIVERED => array(),
-        self::STATUS_CANCELED => array()
+        self::STATUS_APPROVED => array(self::STATUS_SHIPPED, self::STATUS_CANCELED, self::STATUS_RETURNED),
+        self::STATUS_SHIPPED => array(self::STATUS_DELIVERED, self::STATUS_RETURNED),
+        self::STATUS_DELIVERED => array(self::STATUS_RETURNED),
+        self::STATUS_CANCELED => array(self::STATUS_RETURNED),
+        self::STATUS_RETURNED => array()
     );
 
     public function getId()

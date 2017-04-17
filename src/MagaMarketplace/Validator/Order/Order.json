@@ -141,7 +141,7 @@
                 "status": {
                     "type": "string",
                     "description": "Status",
-                    "enum": ["new", "approved", "shipped", "delivered", "canceled"]
+                    "enum": ["new", "approved", "shipped", "delivered", "canceled", "returned"]
                 },
                 "quantity": {
                     "type": "integer",
