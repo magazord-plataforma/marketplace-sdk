@@ -49,6 +49,12 @@ class OrdersStatistics extends Domain\AbstractModel
     protected $statusCanceled;
 
     /**
+     * Pedidos devolvidos
+     * @var Statistic
+     */
+    protected $statusReturned;
+
+    /**
      * Mapeamento de propriedades que sao objetos ou arrays
      * @var array
      */
@@ -58,7 +64,8 @@ class OrdersStatistics extends Domain\AbstractModel
         'statusApproved' => '\\MagaMarketplace\\Domain\\Report\\Statistic',
         'statusShipped' => '\\MagaMarketplace\\Domain\\Report\\Statistic',
         'statusDelivered' => '\\MagaMarketplace\\Domain\\Report\\Statistic',
-        'statusCanceled' => '\\MagaMarketplace\\Domain\\Report\\Statistic'
+        'statusCanceled' => '\\MagaMarketplace\\Domain\\Report\\Statistic',
+        'statusReturned' => '\\MagaMarketplace\\Domain\\Report\\Statistic'
     );
 
     public function getTotal()
@@ -91,6 +98,11 @@ class OrdersStatistics extends Domain\AbstractModel
         return $this->statusCanceled;
     }
 
+    public function getStatusReturned()
+    {
+        return $this->statusReturned;
+    }
+
     public function setTotal(Statistic $total = null)
     {
         $this->total = $total;
@@ -121,6 +133,11 @@ class OrdersStatistics extends Domain\AbstractModel
         $this->statusCanceled = $statusCanceled;
     }
 
+    public function setStatusReturned(Statistic $statusReturned = null)
+    {
+        $this->statusReturned = $statusReturned;
+    }
+
     public function init()
     {
         $this->setTotal(new Statistic());
@@ -129,6 +146,7 @@ class OrdersStatistics extends Domain\AbstractModel
         $this->setStatusShipped(new Statistic());
         $this->setStatusDelivered(new Statistic());
         $this->setStatusCanceled(new Statistic());
+        $this->setStatusReturned(new Statistic());
     }
 
 }

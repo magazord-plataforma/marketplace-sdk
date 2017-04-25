@@ -20,12 +20,6 @@ class Order extends Domain\AbstractModel
     const STATUS_RETURNED = 'returned';
 
     /**
-     * Identificador
-     * @var string
-     */
-    protected $id;
-
-    /**
      * Número do pedido para o cliente
      * @var string
      */
@@ -121,11 +115,6 @@ class Order extends Domain\AbstractModel
         self::STATUS_RETURNED => array()
     );
 
-    public function getId()
-    {
-        return $this->id;
-    }
-
     public function getSiteId()
     {
         return $this->siteId;
@@ -158,6 +147,18 @@ class Order extends Domain\AbstractModel
             $this->setStatus($status);
         }
         return $this->status;
+    }
+
+    static public function getStatusList()
+    {
+        return array(
+            self::STATUS_NEW => 'Novo',
+            self::STATUS_APPROVED => 'Aprovado',
+            self::STATUS_SHIPPED => 'Transporte',
+            self::STATUS_DELIVERED => 'Entregue',
+            self::STATUS_CANCELED => 'Cancelado',
+            self::STATUS_RETURNED => 'Devolvido'
+        );
     }
 
     public function getClient()
@@ -201,11 +202,6 @@ class Order extends Domain\AbstractModel
     public function getLastUpdate()
     {
         return $this->lastUpdate;
-    }
-
-    public function setId($id)
-    {
-        $this->id = $this->stringValue($id);
     }
 
     public function setSiteId($siteId)

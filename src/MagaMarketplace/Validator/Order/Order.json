@@ -180,11 +180,6 @@
         }
     },
     "properties": {
-        "id": {
-            "type": "string",
-            "description": "Identificador",
-            "maxLength": 22
-        },
         "siteId": {
             "type": "string",
             "description": "Número do pedido para o cliente",

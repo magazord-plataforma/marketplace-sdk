@@ -11,6 +11,12 @@ class OrderResponse extends Order
 {
 
     /**
+     * Identificador
+     * @var string
+     */
+    protected $id;
+
+    /**
      * Tracking do Pedido
      * @var TrackingResponse[]
      */
@@ -27,9 +33,19 @@ class OrderResponse extends Order
         'tracking' => '\\MagaMarketplace\\Domain\\Order\\TrackingResponse'
     );
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
     public function getTracking()
     {
         return $this->tracking;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $this->stringValue($id);
     }
 
     public function setTracking(array $tracking = null)

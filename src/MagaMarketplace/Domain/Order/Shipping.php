@@ -78,7 +78,7 @@ class Shipping extends Tracking
 
     public function setTrackingNumber($trackingNumber)
     {
-        $this->trackingNumber = $trackingNumber;
+        $this->trackingNumber = $this->stringValue($trackingNumber);
     }
 
     public function setInvoice(Invoice $invoice = null)
