@@ -58,6 +58,12 @@ class ItemListFilter extends ListFilter
      */
     protected $dateCreated;
 
+    /**
+     * Identifica se retorna o detalhamento do "attributes" no ItemResponse. Padrão: False
+     * @var bool
+     */
+    protected $expandAttributes;
+
     public function getId()
     {
         return $this->id;
@@ -93,6 +99,11 @@ class ItemListFilter extends ListFilter
         return $this->dateCreated;
     }
 
+    public function getExpandAttributes()
+    {
+        return $this->expandAttributes;
+    }
+
     public function setId($id)
     {
         $this->id = $id;
@@ -126,6 +137,11 @@ class ItemListFilter extends ListFilter
     public function setDateCreated($dateCreated)
     {
         $this->dateCreated = $dateCreated;
+    }
+
+    public function setExpandAttributes($expandAttributes)
+    {
+        $this->expandAttributes = $this->boolValue($expandAttributes);
     }
 
 }

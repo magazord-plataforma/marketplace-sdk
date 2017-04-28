@@ -227,7 +227,7 @@ class Item extends Domain\AbstractModel
      */
     public function getAttributes()
     {
-        return $this->defaultValue($this->attributes, array());
+        return $this->attributes;
     }
 
     public function getActive()

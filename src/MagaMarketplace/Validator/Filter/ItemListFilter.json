@@ -33,6 +33,10 @@
             "description": "Data/hora de criação inicial",
             "format": "date-time"
         },        
+        "expandAttributes": {
+            "type": "boolean",
+            "description": "Identifica se retorna o detalhamento do \"attributes\" no ItemResponse. Padrão: False"
+        },        
         "limit": {
             "type": "integer",
             "description": "Quantidade de registros. Padrão: 50",

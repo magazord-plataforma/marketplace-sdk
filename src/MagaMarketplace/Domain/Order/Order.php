@@ -136,7 +136,7 @@ class Order extends Domain\AbstractModel
      */
     public function getStatus()
     {
-        if (!$this->status) {
+        if (!$this->status && $this->getItems()) {
             // Status movido para os itens em 10/2016
             $status = array();
             foreach ($this->getItems() as $orderItem) {

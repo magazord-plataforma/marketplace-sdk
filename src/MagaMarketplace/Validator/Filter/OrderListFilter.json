@@ -19,7 +19,7 @@
         "clientName": {
             "type": "string",
             "description": "Nome do cliente"
-        },        
+        },
         "lastUpdate": {
             "type": "string",
             "description": "Data/hora última atualização inicial",
@@ -33,6 +33,14 @@
         "itemId": {
             "type": "string",
             "description": "Identificador Anúncio"
+        },
+        "expandItems": {
+            "type": "boolean",
+            "description": "Identifica se retorna o detalhamento do \"items\" no OrderResponse. Padrão: True"
+        },
+        "expandTracking": {
+            "type": "boolean",
+            "description": "Identifica se retorna o detalhamento do \"tracking\" no OrderResponse. Padrão: False"
         },
         "limit": {
             "type": "integer",

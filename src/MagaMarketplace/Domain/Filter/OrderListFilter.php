@@ -56,6 +56,18 @@ class OrderListFilter extends ListFilter
      */
     protected $itemId;
 
+    /**
+     * Identifica se retorna o detalhamento do "items" no OrderResponse. Padrão: True
+     * @var bool
+     */
+    protected $expandItems;
+
+    /**
+     * Identifica se retorna o detalhamento do "tracking" no OrderResponse. Padrão: False
+     * @var bool
+     */
+    protected $expandTracking;
+
     public function getId()
     {
         return $this->id;
@@ -91,6 +103,16 @@ class OrderListFilter extends ListFilter
         return $this->itemId;
     }
 
+    public function getExpandItems()
+    {
+        return $this->expandItems;
+    }
+
+    public function getExpandTracking()
+    {
+        return $this->expandTracking;
+    }
+
     public function setId($id)
     {
         $this->id = $this->stringValue($id);
@@ -124,6 +146,16 @@ class OrderListFilter extends ListFilter
     public function setItemId($itemId)
     {
         $this->itemId = $this->stringValue($itemId);
+    }
+
+    public function setExpandItems($expandItems)
+    {
+        $this->expandItems = $this->boolValue($expandItems);
+    }
+
+    public function setExpandTracking($expandTracking)
+    {
+        $this->expandTracking = $this->boolValue($expandTracking);
     }
 
 }
