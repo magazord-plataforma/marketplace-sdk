@@ -29,12 +29,6 @@ class Seller extends AbstractModel
     protected $status;
 
     /**
-     * Url de Notificação
-     * @var string
-     */
-    protected $notificationCallback;
-
-    /**
      * Ean obrigatório?
      * @var bool
      */
@@ -55,11 +49,6 @@ class Seller extends AbstractModel
         return $this->status;
     }
 
-    public function getNotificationCallback()
-    {
-        return $this->notificationCallback;
-    }
-
     public function getEanRequired()
     {
         return $this->eanRequired;
@@ -78,11 +67,6 @@ class Seller extends AbstractModel
     public function setStatus($status)
     {
         $this->status = $status;
-    }
-
-    public function setNotificationCallback($notificationCallback)
-    {
-        $this->notificationCallback = $notificationCallback;
     }
 
     public function setEanRequired($eanRequired)
