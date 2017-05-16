@@ -25,6 +25,12 @@ class Shipping extends Tracking
     protected $trackingNumber;
 
     /**
+     * Url da transportadora para o rastreamento do pedido
+     * @var string
+     */
+    protected $trackingUrl;
+
+    /**
      * Nota Fiscal
      * @var Invoice
      */
@@ -61,6 +67,11 @@ class Shipping extends Tracking
         return $this->trackingNumber;
     }
 
+    public function getTrackingUrl()
+    {
+        return $this->trackingUrl;
+    }
+
     public function getInvoice()
     {
         return $this->invoice;
@@ -79,6 +90,11 @@ class Shipping extends Tracking
     public function setTrackingNumber($trackingNumber)
     {
         $this->trackingNumber = $this->stringValue($trackingNumber);
+    }
+
+    public function setTrackingUrl($trackingUrl)
+    {
+        $this->trackingUrl = $this->stringValue($trackingUrl);
     }
 
     public function setInvoice(Invoice $invoice = null)
