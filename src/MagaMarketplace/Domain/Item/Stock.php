@@ -25,7 +25,7 @@ class Stock extends Domain\AbstractModel
 
     public function setQuantity($quantity)
     {
-        $this->quantity = $quantity;
+        $this->quantity = $this->intValue($quantity);
     }
 
 }
