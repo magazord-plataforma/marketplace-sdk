@@ -60,6 +60,7 @@ class FreightPreview extends Domain\AbstractModel
         $item->setQuantity($quantity);
         $items[] = $item;
         $this->setItems($items);
+        return $item;
     }
 
 }
