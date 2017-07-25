@@ -12,6 +12,7 @@ class Link extends AbstractModel
 
     const REL_ITEM = 'items';
     const REL_ORDER = 'orders';
+    const REL_TICKET = 'tickets';
 
     /**
      * Identificador do recurso
@@ -91,6 +92,15 @@ class Link extends AbstractModel
         $link = new Link();
         $link->setId($id);
         $link->setRel(self::REL_ORDER);
+        $link->setHref('/' . $link->getRel() . '/' . $id);
+        return $link;
+    }
+
+    static public function ticketsLink($id)
+    {
+        $link = new Link();
+        $link->setId($id);
+        $link->setRel(self::REL_TICKET);
         $link->setHref('/' . $link->getRel() . '/' . $id);
         return $link;
     }

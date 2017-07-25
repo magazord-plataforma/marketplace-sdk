@@ -1,0 +1,64 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "TicketListFilter schema.",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Identificador"
+        },
+        "dateCreated": {
+            "type": "string",
+            "description": "Data/hora de criação inicial",
+            "format": "date-time"
+        },
+        "clientName": {
+            "type": "string",
+            "description": "Nome do cliente"
+        },
+        "orderId": {
+            "type": "string",
+            "description": "Número do pedido"
+        },
+        "subject": {
+            "type": "string",
+            "description": "Assunto"
+        },        
+        "status": {
+            "type": "string",
+            "description": "Status",
+            "enum": ["opened", "in_progress", "closed"]
+        },
+        "lastUpdate": {
+            "type": "string",
+            "description": "Data/hora última atualização inicial",
+            "format": "date-time"
+        },        
+        "expandMessages": {
+            "type": "boolean",
+            "description": "Identifica se retorna o detalhamento do \"messages\" no Ticket. Padrão: False"
+        },
+        "limit": {
+            "type": "integer",
+            "description": "Quantidade de registros. Padrão: 50",
+            "minimum": 0,
+            "maximum": 50
+        },
+        "offset": {
+            "type": "integer",
+            "description": "Posição inicial da consulta. Padrão: 0",
+            "minimum": 0
+        },
+        "sort": {
+            "type": "string",
+            "description": "Ordenação dos registros",
+            "enum": ["id", "dateCreated", "lastUpdate"]
+        },
+        "sortDirection": {
+            "type": "string",
+            "description": "Direção da ordenação dos registros",
+            "enum": ["asc", "desc"]
+        }
+    },
+    "required": ["limit", "offset"]
+}

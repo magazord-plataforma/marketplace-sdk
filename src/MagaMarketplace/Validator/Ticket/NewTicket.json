@@ -1,0 +1,72 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "New Ticket schema.",
+    "definitions": {
+        "Client": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Nome",
+                    "maxLength": 100
+                }
+            },
+            "required": ["name"]
+        },
+        "Link": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "rel": {
+                    "type": "string"
+                },
+                "href": {
+                    "type": "string"
+                }
+            },
+            "required": ["id"]
+        }
+    },
+    "properties": {
+        "dateCreated": {
+            "type": "string",
+            "description": "Data/hora de abertura",
+            "format": "date-time"
+        },
+        "type": {
+            "type": "string",
+            "description": "Tipo",
+            "maxLength": 100
+        },
+        "subject": {
+            "type": "string",
+            "description": "Assunto",
+            "maxLength": 200
+        },
+        "status": {
+            "type": "string",
+            "description": "Status",
+            "enum": ["opened", "in_progress"]
+        },
+        "client": {
+            "$ref": "#/definitions/Client",
+            "description": "Cliente"
+        },
+        "order": {
+            "$ref": "#/definitions/Link",
+            "description": "Pedido"
+        },
+        "message": {
+            "type": "string",
+            "description": "Mensagem"
+        },
+        "sendClient": {
+            "type": "boolean",
+            "description": "Mensagem enviada/disponível para o cliente?"
+        }
+    },
+    "required": ["type", "subject", "client", "message", "sendClient"]
+}

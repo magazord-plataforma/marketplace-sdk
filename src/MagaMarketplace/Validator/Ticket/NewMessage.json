@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "Message Ticket schema.",
+    "properties": {
+        "dateCreated": {
+            "type": "string",
+            "description": "Data/hora",
+            "format": "date-time"
+        },
+        "message": {
+            "type": "string",
+            "description": "Mensagem"
+        },
+        "sendClient": {
+            "type": "boolean",
+            "description": "Mensagem enviada/disponível para o cliente?"
+        },
+        "userName": {
+            "type": "string",
+            "description": "Usuário"
+        }
+    },
+    "required": ["message", "sendClient"]
+}
