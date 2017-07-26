@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "TransferTransactionListFilter schema.",
+    "properties": {
+        "orderId": {
+            "type": "string",
+            "description": "Número do pedido"
+        },
+        "limit": {
+            "type": "integer",
+            "description": "Quantidade de registros. Padrão: 50",
+            "minimum": 0,
+            "maximum": 50
+        },
+        "offset": {
+            "type": "integer",
+            "description": "Posição inicial da consulta. Padrão: 0",
+            "minimum": 0
+        },
+        "sort": {
+            "type": "string",
+            "description": "Ordenação dos registros",
+            "enum": ["id"]
+        },
+        "sortDirection": {
+            "type": "string",
+            "description": "Direção da ordenação dos registros",
+            "enum": ["asc", "desc"]
+        }
+    },
+    "required": ["limit", "offset"]
+}

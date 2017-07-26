@@ -48,4 +48,31 @@ class ReportSender extends AbstractSender
         return $this->send('/reports/orders/statistics', null, (array) $filter->serialize());
     }
 
+    /**
+     * Consulta de Fechamento Financeiro
+     * @param Domain\Filter\TransferListFilter $filter
+     * @return Domain\Report\TransferListResponse|Domain\Error
+     */
+    public function getTransfers(Domain\Filter\TransferListFilter $filter)
+    {
+        $this->reset();
+        $this->setMethod(self::METHOD_GET);
+        $this->setResponse(new Domain\Report\TransferListResponse());
+        return $this->send('/reports/transfers', null, (array) $filter->serialize());
+    }
+
+    /**
+     * Consulta das Movimentações do Fechamento Financeiro
+     * @param int $id
+     * @param Domain\Filter\TransferTransactionListFilter $filter
+     * @return Domain\Report\TransactionListResponse|Domain\Error
+     */
+    public function getTransferTransactions($id, Domain\Filter\TransferTransactionListFilter $filter)
+    {
+        $this->reset();
+        $this->setMethod(self::METHOD_GET);
+        $this->setResponse(new Domain\Report\TransactionListResponse());
+        return $this->send('/reports/transfers/' . $id . '/transaction', null, (array) $filter->serialize());
+    }
+
 }
