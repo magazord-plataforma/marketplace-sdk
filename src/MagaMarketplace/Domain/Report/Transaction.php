@@ -12,6 +12,9 @@ use \MagaMarketplace\Domain;
 class Transaction extends Domain\AbstractModel
 {
 
+    const TYPE_CREDIT = 'credit';
+    const TYPE_DEBIT = 'debit';
+
     /**
      * Data
      * @var string
@@ -36,6 +39,12 @@ class Transaction extends Domain\AbstractModel
      */
     protected $value;
 
+    /**
+     * Observações
+     * @var string
+     */
+    protected $description;
+
     public function getDate()
     {
         return $this->date;
@@ -56,6 +65,11 @@ class Transaction extends Domain\AbstractModel
         return $this->value;
     }
 
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
     public function setDate($date)
     {
         $this->date = $date;
@@ -73,7 +87,12 @@ class Transaction extends Domain\AbstractModel
 
     public function setValue($value)
     {
-        $this->value = $value;
+        $this->value = $this->floatValue($value);
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = $description;
     }
 
 }

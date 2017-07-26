@@ -91,7 +91,7 @@ class Transfer extends Domain\AbstractModel
 
     public function setId($id)
     {
-        $this->id = $id;
+        $this->id = $this->intValue($id);
     }
 
     public function setStartDate($startDate)
@@ -111,17 +111,17 @@ class Transfer extends Domain\AbstractModel
 
     public function setCreditAmount($creditAmount)
     {
-        $this->creditAmount = $creditAmount;
+        $this->creditAmount = $this->floatValue($creditAmount);
     }
 
     public function setDebitAmount($debitAmount)
     {
-        $this->debitAmount = $debitAmount;
+        $this->debitAmount = $this->floatValue($debitAmount);
     }
 
     public function setTotalAmount($totalAmount)
     {
-        $this->totalAmount = $totalAmount;
+        $this->totalAmount = $this->floatValue($totalAmount);
     }
 
 }
