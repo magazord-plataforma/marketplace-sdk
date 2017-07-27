@@ -45,6 +45,14 @@ class Transaction extends Domain\AbstractModel
      */
     protected $description;
 
+    /**
+     * Mapeamento de propriedades que sao objetos ou arrays
+     * @var array
+     */
+    protected $_mapper = array(
+        'order' => '\\MagaMarketplace\\Domain\\Link'
+    );
+
     public function getDate()
     {
         return $this->date;
@@ -53,6 +61,14 @@ class Transaction extends Domain\AbstractModel
     public function getType()
     {
         return $this->type;
+    }
+
+    static public function getTypeList()
+    {
+        return array(
+            self::TYPE_CREDIT => 'Credito',
+            self::TYPE_DEBIT => 'Debito'
+        );
     }
 
     public function getOrder()

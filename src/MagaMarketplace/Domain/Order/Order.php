@@ -149,6 +149,23 @@ class Order extends Domain\AbstractModel
         return $this->status;
     }
 
+    /**
+     * Verifica se algum dos itens está no status
+     * @param string $status
+     * @return boolean
+     */
+    public function inStatus($status)
+    {
+        if ($items = $this->getItems()) {
+            foreach ($items as $orderItem) {
+                if ($orderItem->getStatus() == $status) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     static public function getStatusList()
     {
         return array(
