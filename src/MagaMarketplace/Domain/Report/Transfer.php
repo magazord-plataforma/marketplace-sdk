@@ -54,6 +54,20 @@ class Transfer extends Domain\AbstractModel
      */
     protected $totalAmount;
 
+    /**
+     * Nota fiscal de servico
+     * @var Domain\Order\Invoice
+     */
+    protected $invoice;
+
+    /**
+     * Mapeamento de propriedades que sao objetos ou arrays
+     * @var array
+     */
+    protected $_mapper = array(
+        'invoice' => '\\MagaMarketplace\\Domain\\Order\\Invoice'
+    );
+
     public function getId()
     {
         return $this->id;
@@ -89,6 +103,11 @@ class Transfer extends Domain\AbstractModel
         return $this->totalAmount;
     }
 
+    public function getInvoice()
+    {
+        return $this->invoice;
+    }
+
     public function setId($id)
     {
         $this->id = $this->intValue($id);
@@ -122,6 +141,11 @@ class Transfer extends Domain\AbstractModel
     public function setTotalAmount($totalAmount)
     {
         $this->totalAmount = $this->floatValue($totalAmount);
+    }
+
+    public function setInvoice(Domain\Order\Invoice $invoice = null)
+    {
+        $this->invoice = $invoice;
     }
 
 }
