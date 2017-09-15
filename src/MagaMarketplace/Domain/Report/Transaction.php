@@ -29,7 +29,7 @@ class Transaction extends Domain\AbstractModel
 
     /**
      * Pedido
-     * @var Domain\Link
+     * @var Domain\Order\OrderResponse
      */
     protected $order;
 
@@ -50,7 +50,7 @@ class Transaction extends Domain\AbstractModel
      * @var array
      */
     protected $_mapper = array(
-        'order' => '\\MagaMarketplace\\Domain\\Link'
+        'order' => '\\MagaMarketplace\\Domain\\Order\\OrderResponse'
     );
 
     public function getDate()
@@ -96,7 +96,7 @@ class Transaction extends Domain\AbstractModel
         $this->type = $type;
     }
 
-    public function setOrder(Domain\Link $order = null)
+    public function setOrder(Domain\Order\OrderResponse $order = null)
     {
         $this->order = $order;
     }
