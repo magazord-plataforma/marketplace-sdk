@@ -139,7 +139,7 @@ class TicketListFilter extends ListFilter
 
     public function setExpandMessages($expandMessages)
     {
-        $this->expandMessages = $expandMessages;
+        $this->expandMessages = $this->boolValue($expandMessages);
     }
 
 }

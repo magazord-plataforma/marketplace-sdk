@@ -17,7 +17,7 @@ class TicketListResponse extends Domain\ListResponse
      * @var array
      */
     protected $_mapper = array(
-        'list' => '\\MagaMarketplace\\Domain\\Ticket\\Ticket'
+        'list' => '\\MagaMarketplace\\Domain\\Ticket\\TicketResponse'
     );
 
 }

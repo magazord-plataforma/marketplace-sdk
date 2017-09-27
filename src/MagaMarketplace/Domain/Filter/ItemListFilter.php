@@ -64,6 +64,12 @@ class ItemListFilter extends ListFilter
      */
     protected $expandAttributes;
 
+    /**
+     * Está ativo?
+     * @var boolean
+     */
+    protected $active;
+
     public function getId()
     {
         return $this->id;
@@ -104,6 +110,11 @@ class ItemListFilter extends ListFilter
         return $this->expandAttributes;
     }
 
+    public function getActive()
+    {
+        return $this->active;
+    }
+
     public function setId($id)
     {
         $this->id = $id;
@@ -142,6 +153,11 @@ class ItemListFilter extends ListFilter
     public function setExpandAttributes($expandAttributes)
     {
         $this->expandAttributes = $this->boolValue($expandAttributes);
+    }
+
+    public function setActive($active)
+    {
+        $this->active = $this->boolValue($active);
     }
 
 }
