@@ -4,6 +4,7 @@
     "properties": {
         "available": {
             "type": "integer",
+            "description": "Quantidade disponível para venda",
             "minimum": 0
         }
     },

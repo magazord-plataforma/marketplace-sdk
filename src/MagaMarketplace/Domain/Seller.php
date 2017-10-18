@@ -34,6 +34,12 @@ class Seller extends AbstractModel
      */
     protected $eanRequired;
 
+    /**
+     * Configurações diversas do Lojista
+     * @var \stdClass
+     */
+    protected $settings;
+
     public function getId()
     {
         return $this->id;
@@ -54,6 +60,16 @@ class Seller extends AbstractModel
         return $this->eanRequired;
     }
 
+    public function getSettings()
+    {
+        return $this->settings;
+    }
+
+    public function getSetting($key)
+    {
+        return ($this->settings && isset($this->settings->$key)) ? $this->settings->$key : null;
+    }
+
     public function setId($id)
     {
         $this->id = $this->intValue($id);
@@ -72,6 +88,11 @@ class Seller extends AbstractModel
     public function setEanRequired($eanRequired)
     {
         $this->eanRequired = $this->boolValue($eanRequired);
+    }
+
+    public function setSettings(\stdClass $settings = null)
+    {
+        $this->settings = $settings;
     }
 
 }

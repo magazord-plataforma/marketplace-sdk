@@ -4,7 +4,18 @@
     "properties": {
         "quantity": {
             "type": "integer",
+            "description": "Quantidade em estoque",
             "minimum": 0
+        },
+        "shippingTime": {
+            "type": "integer",
+            "description": "Prazo de expedição (dias)",
+            "minimum": 0
+        },
+        "preSaleDate": {
+            "type": "string",
+            "description": "Data Pré Venda.",
+            "format": "date"
         }
     },
     "required": ["quantity"]
