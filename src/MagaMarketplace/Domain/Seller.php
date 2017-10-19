@@ -29,10 +29,10 @@ class Seller extends AbstractModel
     protected $status;
 
     /**
-     * Ean obrigatório?
-     * @var bool
+     * Grupo
+     * @var integer
      */
-    protected $eanRequired;
+    protected $groupId;
 
     /**
      * Configurações diversas do Lojista
@@ -55,9 +55,14 @@ class Seller extends AbstractModel
         return $this->status;
     }
 
+    public function getGroupId()
+    {
+        return $this->groupId;
+    }
+
     public function getEanRequired()
     {
-        return $this->eanRequired;
+        return ($this->getSetting('eanObrigatorio') === true);
     }
 
     public function getSettings()
@@ -85,9 +90,9 @@ class Seller extends AbstractModel
         $this->status = $status;
     }
 
-    public function setEanRequired($eanRequired)
+    public function setGroupId($groupId)
     {
-        $this->eanRequired = $this->boolValue($eanRequired);
+        $this->groupId = $this->intValue($groupId);
     }
 
     public function setSettings(\stdClass $settings = null)
