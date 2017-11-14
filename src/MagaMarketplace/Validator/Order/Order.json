@@ -120,13 +120,20 @@
             "type": "object",
             "properties": {
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Identificador do recurso"
                 },
                 "rel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Tipo do recurso: items, orders"
                 },
                 "href": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Link para acessar o recurso"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Descrição do recurso"
                 }
             },
             "required": ["id"]
@@ -177,6 +184,25 @@
                 "interest",
                 "total"
             ]
+        },
+        "OrderPayment": {
+            "type": "object",
+            "properties": {
+                "method": {
+                    "type": "string",
+                    "description": "Meio de Pagamento"
+                },
+                "installments": {
+                    "type": "integer",
+                    "description": "Número de parcelas",
+                    "minimum": 1
+                },
+                "value": {
+                    "type": "number",
+                    "description": "Valor",
+                    "minimum": 0
+                }
+            }
         }
     },
     "properties": {
@@ -230,6 +256,13 @@
             "type": "number",
             "description": "Valor total",
             "minimum": 0
+        },
+        "payment": {
+            "type": "array",
+            "description": "Formas de Pagamento do Pedido utilizada pelo cliente",
+            "items": {
+                "$ref": "#/definitions/OrderPayment"
+            }
         },
         "lastUpdate": {
             "type": "string",

@@ -30,6 +30,7 @@ class OrderResponse extends Order
         'client' => '\\MagaMarketplace\\Domain\\Order\\Client',
         'items' => '\\MagaMarketplace\\Domain\\Order\\OrderItem',
         'shippingAddress' => '\\MagaMarketplace\\Domain\\Order\\ShippingAddress',
+        'payment' => '\\MagaMarketplace\\Domain\\Order\\OrderPayment',
         'tracking' => '\\MagaMarketplace\\Domain\\Order\\TrackingResponse'
     );
 

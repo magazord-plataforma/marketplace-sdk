@@ -185,6 +185,25 @@
                 "total"
             ]
         },
+        "OrderPayment": {
+            "type": "object",
+            "properties": {
+                "method": {
+                    "type": "string",
+                    "description": "Meio de Pagamento"
+                },
+                "installments": {
+                    "type": "integer",
+                    "description": "Número de parcelas",
+                    "minimum": 1
+                },
+                "value": {
+                    "type": "number",
+                    "description": "Valor",
+                    "minimum": 0
+                }
+            }
+        },
         "OrderResponse": {
             "properties": {
                 "id": {
@@ -242,6 +261,13 @@
                     "type": "number",
                     "description": "Valor total",
                     "minimum": 0
+                },
+                "payment": {
+                    "type": "array",
+                    "description": "Formas de Pagamento do Pedido utilizada pelo cliente",
+                    "items": {
+                        "$ref": "#/definitions/OrderPayment"
+                    }
                 },
                 "lastUpdate": {
                     "type": "string",

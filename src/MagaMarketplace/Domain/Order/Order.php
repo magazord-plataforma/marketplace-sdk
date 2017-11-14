@@ -93,13 +93,20 @@ class Order extends Domain\AbstractModel
     protected $lastUpdate;
 
     /**
+     * Formas de Pagamento do Pedido utilizada pelo cliente
+     * @var OrderPayment[]
+     */
+    protected $payment;
+
+    /**
      * Mapeamento de propriedades que sao objetos ou arrays
      * @var array
      */
     protected $_mapper = array(
         'client' => '\\MagaMarketplace\\Domain\\Order\\Client',
         'items' => '\\MagaMarketplace\\Domain\\Order\\OrderItem',
-        'shippingAddress' => '\\MagaMarketplace\\Domain\\Order\\ShippingAddress'
+        'shippingAddress' => '\\MagaMarketplace\\Domain\\Order\\ShippingAddress',
+        'payment' => '\\MagaMarketplace\\Domain\\Order\\OrderPayment'
     );
 
     /**
@@ -216,6 +223,11 @@ class Order extends Domain\AbstractModel
         return $this->totalAmount;
     }
 
+    public function getPayment()
+    {
+        return $this->payment;
+    }
+
     public function getLastUpdate()
     {
         return $this->lastUpdate;
@@ -281,6 +293,11 @@ class Order extends Domain\AbstractModel
     public function setTotalAmount($totalAmount)
     {
         $this->totalAmount = $this->floatValue($totalAmount);
+    }
+
+    public function setPayment(array $payment = null)
+    {
+        $this->payment = $payment;
     }
 
     public function setLastUpdate($lastUpdate)
