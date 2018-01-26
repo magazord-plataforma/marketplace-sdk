@@ -14,6 +14,7 @@ class TicketResponse extends Domain\AbstractModel
 
     const STATUS_OPENED = 'opened';
     const STATUS_IN_PROGRESS = 'in_progress';
+    const STATUS_ANSWERED = 'answered';
     const STATUS_CLOSED = 'closed';
 
     /**
@@ -109,6 +110,16 @@ class TicketResponse extends Domain\AbstractModel
     public function getStatus()
     {
         return $this->status;
+    }
+
+    static public function getStatusList()
+    {
+        return array(
+            self::STATUS_OPENED => 'Aberto',
+            self::STATUS_IN_PROGRESS => 'Em andamento',
+            self::STATUS_ANSWERED => 'Respondido por Lojista',
+            self::STATUS_CLOSED => 'Fechado'
+        );
     }
 
     public function getClient()

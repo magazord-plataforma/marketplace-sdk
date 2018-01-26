@@ -3,11 +3,6 @@
     "type": "object",
     "title": "Message Ticket schema.",
     "properties": {
-        "dateCreated": {
-            "type": "string",
-            "description": "Data/hora",
-            "format": "date-time"
-        },
         "message": {
             "type": "string",
             "description": "Mensagem"

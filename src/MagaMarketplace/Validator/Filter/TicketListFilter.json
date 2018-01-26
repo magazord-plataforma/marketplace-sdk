@@ -23,17 +23,17 @@
         "subject": {
             "type": "string",
             "description": "Assunto"
-        },        
+        },
         "status": {
             "type": "string",
             "description": "Status",
-            "enum": ["opened", "in_progress", "closed"]
+            "enum": ["opened", "in_progress", "answered", "closed"]
         },
         "lastUpdate": {
             "type": "string",
             "description": "Data/hora última atualização inicial",
             "format": "date-time"
-        },        
+        },
         "expandMessages": {
             "type": "boolean",
             "description": "Identifica se retorna o detalhamento do \"messages\" no Ticket. Padrão: False"

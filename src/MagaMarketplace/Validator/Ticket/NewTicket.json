@@ -39,7 +39,7 @@
         "type": {
             "type": "string",
             "description": "Tipo",
-            "maxLength": 100
+            "enum": ["Dúvidas", "Vendas", "Reclamações", "Trocas"]
         },
         "subject": {
             "type": "string",

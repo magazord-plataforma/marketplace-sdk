@@ -1,0 +1,161 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "definitions": {
+        "Telephone": {
+            "type": "object",
+            "properties": {
+                "number": {
+                    "type": "string",
+                    "description": "Número",
+                    "maxLength": 22
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Tipo",
+                    "enum": ["home", "cellphone", "business"]
+                }
+            },
+            "required": ["number"]
+        },
+        "Client": {
+            "type": "object",
+            "properties": {
+                "documentNumber": {
+                    "type": "string",
+                    "description": "CPF/CNPJ",
+                    "maxLength": 18
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Nome",
+                    "maxLength": 100
+                },
+                "phones": {
+                    "type": "array",
+                    "description": "Telefones de contato",
+                    "items": {
+                        "$ref": "#/definitions/Telephone"
+                    }
+                },
+                "birthDate": {
+                    "type": "string",
+                    "description": "Data de nascimento",
+                    "format": "date"
+                }
+            },
+            "required": ["name"]
+        },
+        "MessageResponse": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "Identificador"
+                },
+                "dateCreated": {
+                    "type": "string",
+                    "description": "Data/hora",
+                    "format": "date-time"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Mensagem"
+                },
+                "sendClient": {
+                    "type": "boolean",
+                    "description": "Mensagem enviada/disponível para o cliente?"
+                },
+                "userName": {
+                    "type": "string",
+                    "description": "Usuário"
+                }
+            },
+            "required": ["id", "dateCreated", "message", "sendClient"]
+        },
+        "TicketResponse": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "Identificador"
+                },
+                "dateCreated": {
+                    "type": "string",
+                    "description": "Data/hora de abertura",
+                    "format": "date-time"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Tipo",
+                    "enum": ["Dúvidas", "Vendas", "Reclamações", "Trocas"]
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Assunto",
+                    "maxLength": 200
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status",
+                    "enum": ["opened", "in_progress", "answered", "closed"]
+                },
+                "client": {
+                    "$ref": "#/definitions/Client",
+                    "description": "Cliente"
+                },
+                "order": {
+                    "$ref": "#/definitions/Link",
+                    "description": "Pedido"
+                },
+                "store": {
+                    "type": "string",
+                    "description": "Loja do marketplace",
+                    "maxLength": 18
+                },
+                "messages": {
+                    "type": "array",
+                    "description": "Mensagens",
+                    "items": {
+                        "$ref": "#/definitions/MessageResponse"
+                    }
+                },
+                "lastUpdate": {
+                    "type": "string",
+                    "description": "Data/hora última atualização",
+                    "format": "date-time"
+                }
+            },
+            "required": [
+                "id",
+                "dateCreated",
+                "type",
+                "subject",
+                "client"
+            ]
+        }
+    },
+    "properties": {
+        "list": {
+            "type": "array",
+            "description": "Listagem dos atendimentos",
+            "items": {
+                "$ref": "#/definitions/TicketResponse"
+            }
+        },
+        "totalRows": {
+            "type": "integer",
+            "description": "Total de registros"
+        },
+        "limit": {
+            "type": "integer",
+            "description": "Registros por consulta",
+            "minimum": 0,
+            "maximum": 50
+        },
+        "offset": {
+            "type": "integer",
+            "description": "Posição inicial da consulta",
+            "minimum": 0
+        }
+    },
+    "required": ["list", "totalRows", "limit", "offset"]
+}
