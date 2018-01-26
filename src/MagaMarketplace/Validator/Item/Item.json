@@ -64,7 +64,7 @@
                 "id": {
                     "type": "string",
                     "description": "Nome",
-                    "maxLength": 50
+                    "maxLength": 200
                 },
                 "value": {
                     "type": "string",
@@ -163,7 +163,7 @@
         },
         "weight": {
             "type": "number",
-            "description": "Peso (gramas)"
+            "description": "Peso (kg)"
         },
         "warranty": {
             "type": "string",

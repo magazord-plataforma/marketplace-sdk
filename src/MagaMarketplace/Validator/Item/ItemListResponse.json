@@ -176,7 +176,7 @@
                 },
                 "weight": {
                     "type": "number",
-                    "description": "Peso (gramas)"
+                    "description": "Peso (kg)"
                 },
                 "warranty": {
                     "type": "string",

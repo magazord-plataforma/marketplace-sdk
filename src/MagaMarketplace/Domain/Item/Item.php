@@ -85,7 +85,7 @@ class Item extends Domain\AbstractModel
     protected $dimensions;
 
     /**
-     * Peso (gramas)
+     * Peso (kg)
      * @var float
      */
     protected $weight;
