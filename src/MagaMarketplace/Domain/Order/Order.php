@@ -63,6 +63,12 @@ class Order extends Domain\AbstractModel
     protected $shippingAddress;
 
     /**
+     * Data Limite de Postagem. Formato: YYYY-MM-DD
+     * @var string
+     */
+    protected $latestShipDate;
+
+    /**
      * Data estimada de entrega. Formato: YYYY-MM-DD
      * @var string
      */
@@ -203,6 +209,11 @@ class Order extends Domain\AbstractModel
         return $this->shippingAddress;
     }
 
+    public function getLatestShipDate()
+    {
+        return $this->latestShipDate;
+    }
+
     public function getEstimatedDeliveryDate()
     {
         return $this->estimatedDeliveryDate;
@@ -273,6 +284,11 @@ class Order extends Domain\AbstractModel
     public function setShippingAddress(ShippingAddress $shippingAddress = null)
     {
         $this->shippingAddress = $shippingAddress;
+    }
+
+    public function setLatestShipDate($latestShipDate)
+    {
+        $this->latestShipDate = $latestShipDate;
     }
 
     public function setEstimatedDeliveryDate($estimatedDeliveryDate)

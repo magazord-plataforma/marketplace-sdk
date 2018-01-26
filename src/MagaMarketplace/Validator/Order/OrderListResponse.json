@@ -242,6 +242,11 @@
                     "$ref": "#/definitions/ShippingAddress",
                     "description": "Endereço de entrega"
                 },
+                "latestShipDate" : {
+                    "type": "string",
+                    "description": "Data Limite de Postagem",
+                    "format": "date"
+                },
                 "estimatedDeliveryDate": {
                     "type": "string",
                     "description": "Data estimada de entrega",
