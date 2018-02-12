@@ -49,6 +49,19 @@ class ReportSender extends AbstractSender
     }
 
     /**
+     * Performance dos pedidos
+     * @param Domain\Report\OrdersPerformanceFilter $filter
+     * @return Domain\Report\OrdersPerformanceListResponse|Domain\Error
+     */
+    public function getOrdersPerformance(Domain\Report\OrdersPerformanceFilter $filter)
+    {
+        $this->reset();
+        $this->setMethod(self::METHOD_GET);
+        $this->setResponse(new Domain\Report\OrdersPerformanceListResponse());
+        return $this->send('/reports/orders/performance', null, (array) $filter->serialize());
+    }
+
+    /**
      * Consulta de Fechamento Financeiro
      * @param Domain\Filter\TransferListFilter $filter
      * @return Domain\Report\TransferListResponse|Domain\Error
