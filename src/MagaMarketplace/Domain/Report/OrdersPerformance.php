@@ -43,7 +43,8 @@ class OrdersPerformance extends Domain\AbstractModel
     protected $_mapper = array(
         'seller' => '\\MagaMarketplace\\Domain\\Seller',
         'cancel' => '\\MagaMarketplace\\Domain\\Report\\OrdersPerformanceItem',
-        'shipping' => '\\MagaMarketplace\\Domain\\Report\\OrdersPerformanceItem'
+        'shipping' => '\\MagaMarketplace\\Domain\\Report\\OrdersPerformanceItem',
+        'delivery' => '\\MagaMarketplace\\Domain\\Report\\OrdersPerformanceItem'
     );
 
     public function getSeller()
