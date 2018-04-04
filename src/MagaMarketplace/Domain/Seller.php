@@ -17,6 +17,12 @@ class Seller extends AbstractModel
     protected $id;
 
     /**
+     * CPF/CNPJ
+     * @var string
+     */
+    protected $documentNumber;
+
+    /**
      * Nome
      * @var string
      */
@@ -43,6 +49,11 @@ class Seller extends AbstractModel
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getDocumentNumber()
+    {
+        return $this->documentNumber;
     }
 
     public function getName()
@@ -78,6 +89,11 @@ class Seller extends AbstractModel
     public function setId($id)
     {
         $this->id = $this->intValue($id);
+    }
+
+    public function setDocumentNumber($documentNumber)
+    {
+        $this->documentNumber = $this->stringValue($documentNumber);
     }
 
     public function setName($name)
