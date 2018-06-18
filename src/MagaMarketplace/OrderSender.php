@@ -92,6 +92,20 @@ class OrderSender extends AbstractSender
     }
 
     /**
+     * Atualização de dados do tracking de envio
+     * @param string $id
+     * @param Domain\Order\ShippingUpdate $tracking
+     * @return Domain\AbstractModel|Domain\Error
+     */
+    public function putUpdateShipped($id, Domain\Order\ShippingUpdate $tracking)
+    {
+        $this->reset();
+        $this->setMethod(self::METHOD_PUT);
+        $this->setResponse(new Domain\AbstractModel());
+        return $this->send('/orders/' . $id . '/updateShipped', $tracking);
+    }
+
+    /**
      * Atualização status do pedido para entregue
      * @param string $id
      * @param Domain\Order\Delivery $tracking

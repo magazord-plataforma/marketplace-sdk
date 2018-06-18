@@ -89,7 +89,11 @@ class Error extends AbstractModel
 
     public function getHttpResponseCode()
     {
-        return $this->getHttpCode();
+        $code = $this->getHttpCode();
+        if ($code === null) {
+            $code = parent::getHttpResponseCode();
+        }
+        return $code;
     }
 
     /**

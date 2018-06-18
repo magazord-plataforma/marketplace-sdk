@@ -75,6 +75,12 @@ abstract class AbstractSender
      */
     private $responseHttp;
 
+    /**
+     * Funcão de log de requisições
+     * @var \Closure
+     */
+    private $logger;
+
     public function __construct($endpoint, $user, $password)
     {
         $this->setEndpoint($endpoint);
@@ -137,7 +143,7 @@ abstract class AbstractSender
                 $http = \Httpful\Request::delete($this->url);
                 break;
         }
-        $http->authenticateWithBasic($this->getUser(), $this->getPassword());
+        $this->authenticateClient($http);
         $http->auto_parse = false;
         if ($body) {
             $this->request = $body;
@@ -149,16 +155,29 @@ abstract class AbstractSender
                 $this->processResponse();
             }
         } catch (\Exception $e) {
-            $this->response = Domain\Error::newInstance($e->getMessage(), 0);
+            $this->response = $this->createInstanceError($e->getMessage(), 500);
+        }
+        if ($this->logger) {
+            call_user_func($this->logger, $this);
         }
         return $this->response;
+    }
+
+    protected function createInstanceError($message, $httpCode)
+    {
+        return Domain\Error::newInstance($message, $httpCode);
+    }
+
+    protected function authenticateClient(\Httpful\Request $http)
+    {
+        $http->authenticateWithBasic($this->getUser(), $this->getPassword());
     }
 
     protected function processResponse()
     {
         $this->responseString = $this->responseHttp->raw_body;
         if (!($this->responseHttp->code >= 200 && $this->responseHttp->code <= 204)) {
-            $this->response = new Domain\Error();
+            $this->response = $this->createInstanceError(null, null);
         }
         $this->response->setHttpResponseCode($this->responseHttp->code);
         $responseData = null;
@@ -228,6 +247,16 @@ abstract class AbstractSender
     protected function setResponseString($responseString)
     {
         $this->responseString = $responseString;
+    }
+
+    public function getLogger()
+    {
+        return $this->logger;
+    }
+
+    public function setLogger(\Closure $logger = null)
+    {
+        $this->logger = $logger;
     }
 
     /**

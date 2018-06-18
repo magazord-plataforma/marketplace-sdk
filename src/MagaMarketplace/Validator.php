@@ -24,18 +24,35 @@ class Validator
             if ($validator->isValid()) {
                 return true;
             } else {
-                $result = Domain\Error::newInstance('Invalid JSON data', 400);
+                $result = Domain\Error::newInstance('Dados invalidos (JSON)', 400);
                 foreach ($validator->getErrors() as $error) {
-                    if ($error['property']) {
-                        $result->addDetail(sprintf("[%s] %s", $error['property'], $error['message']));
-                    } else {
-                        $result->addDetail(sprintf("%s", $error['message']));
-                    }
+                    $result->addDetail(self::getErrorDetail($error));
                 }
                 return $result;
             }
         }
         return null;
+    }
+
+    static private function getErrorDetail(array $error)
+    {
+        $message = $error['message'];
+        if ($error['constraint'] == 'required') {
+            $message = 'O atributo e obrigatorio';
+        } else if ($error['constraint'] == 'minLength') {
+            $message = 'O atributo deve conter no minimo ' . $error['minLength'] . ' caracteres';
+        } else if ($error['constraint'] == 'pattern') {
+            $message = 'O atributo deve atender o formato ' . $error['pattern'];
+        } else if ($error['constraint'] == 'format' && $error['format'] == 'uri') {
+            $message = 'URL no formato invalido. Ela deve ser informada completa, incluindo http:// ou https://';
+        } else if ($error['constraint'] == 'format' && $error['format'] == 'date-time') {
+            $message = 'Data/hora no formato invalido. Formato esperado: YYYY-MM-DDThh:mm:ss+hh:mm';
+        }
+        if ($error['property']) {
+            return sprintf("[%s] %s", $error['property'], $message);
+        } else {
+            return sprintf("%s", $message);
+        }
     }
 
     static public function getJsonSchemaFile(Domain\AbstractModel $model)
@@ -44,7 +61,7 @@ class Validator
         $class = str_replace(__NAMESPACE__ . '\\Domain\\', '', get_class($model));
         if (DIRECTORY_SEPARATOR == '/') { // Linux
             $class = str_replace('\\', '/', $class);
-        }        
+        }
         return $dir . $class . '.json';
     }
 

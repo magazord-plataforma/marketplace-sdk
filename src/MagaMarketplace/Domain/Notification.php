@@ -29,6 +29,12 @@ class Notification extends AbstractModel
     protected $resourceStatus;
 
     /**
+     * Código do Lojista
+     * @var int
+     */
+    protected $sellerId;
+
+    /**
      * Mapeamento de propriedades que sao objetos ou arrays
      * @var array
      */
@@ -61,6 +67,11 @@ class Notification extends AbstractModel
         return $this->resourceStatus;
     }
 
+    public function getSellerId()
+    {
+        return $this->sellerId;
+    }
+
     public function setEventDate($eventDate)
     {
         $this->eventDate = $eventDate;
@@ -74,6 +85,11 @@ class Notification extends AbstractModel
     public function setResourceStatus($resourceStatus)
     {
         $this->resourceStatus = $resourceStatus;
+    }
+
+    public function setSellerId($sellerId)
+    {
+        $this->sellerId = $this->intValue($sellerId);
     }
 
 }

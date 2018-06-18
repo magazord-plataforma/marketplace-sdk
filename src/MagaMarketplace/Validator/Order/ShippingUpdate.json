@@ -2,21 +2,6 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "definitions": {
-        "TrackingItem": {
-            "type": "object",
-            "properties": {
-                "itemId": {
-                    "type": "string",
-                    "description": "Identificador do anúncio"
-                },
-                "quantity": {
-                    "type": "integer",
-                    "description": "Quantidade",
-                    "minimum": 1
-                }
-            },
-            "required": ["itemId", "quantity"]
-        },
         "Carrier": {
             "type": "object",
             "properties": {
@@ -64,19 +49,6 @@
         }
     },
     "properties": {
-        "items": {
-            "type": "array",
-            "description": "Lista dos itens",
-            "items": {
-                "$ref": "#/definitions/TrackingItem"
-            },
-            "minItems": 1
-        },
-        "eventDate": {
-            "type": "string",
-            "description": "Data/hora",
-            "format": "date-time"
-        },
         "carrier": {
             "$ref": "#/definitions/Carrier",
             "description": "Transportadora"
@@ -95,11 +67,7 @@
         "invoice": {
             "$ref": "#/definitions/Invoice",
             "description": "Nota fiscal"
-        },
-        "changeStock": {
-            "type": "boolean",
-            "description": "Identifica se a saída do estoque dos itens relacionados ao tracking será feita automaticamente"
         }
     },
-    "required": ["items", "eventDate", "carrier", "trackingNumber", "invoice"]
+    "required": ["trackingNumber"]
 }

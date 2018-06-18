@@ -316,7 +316,7 @@ class Item extends Domain\AbstractModel
 
     public function setWarranty($warranty)
     {
-        $this->warranty = $warranty;
+        $this->warranty = $this->stringValue($warranty);
     }
 
     public function setVariations(array $variations = null)
@@ -343,6 +343,22 @@ class Item extends Domain\AbstractModel
         $att = new Attribute($id, $value);
         $attributes[] = $att;
         $this->setAttributes($attributes);
+    }
+
+    /**
+     * @param string $id
+     * @return Attribute
+     */
+    public function findAttribute($id)
+    {
+        if ($this->getAttributes()) {
+            foreach ($this->getAttributes() as $att) {
+                if ($att->getId() == $id) {
+                    return $att;
+                }
+            }
+        }
+        return null;
     }
 
     public function setActive($active)

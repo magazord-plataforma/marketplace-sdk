@@ -95,13 +95,13 @@
         "id": {
             "type": "string",
             "description": "Identificador (único e que servirá de referência para consultas e alterações do item em questão)",
-            "maxLength": 22,
+            "maxLength": 30,
             "pattern": "^[a-zA-Z0-9\\-_\\.]*$"
         },
         "productId": {
             "type": "string",
             "description": "Identificador Agrupador (para produtos com variação)",
-            "maxLength": 22,
+            "maxLength": 30,
             "pattern": "^[a-zA-Z0-9\\-_\\.]*$"
         },
         "brand": {

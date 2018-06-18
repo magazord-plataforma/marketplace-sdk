@@ -44,12 +44,12 @@ class Attribute extends Domain\AbstractModel
 
     public function setId($id)
     {
-        $this->id = $id;
+        $this->id = $this->stringValue($id);
     }
 
     public function setValue($value)
     {
-        $this->value = $value;
+        $this->value = $this->stringValue($value);
     }
 
 }
