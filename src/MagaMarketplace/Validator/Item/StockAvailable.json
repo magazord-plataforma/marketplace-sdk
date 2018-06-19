@@ -6,6 +6,11 @@
             "type": "integer",
             "description": "Quantidade disponível para venda",
             "minimum": 0
+        },
+        "shippingTime": {
+            "type": "integer",
+            "description": "Prazo de expedição (dias)",
+            "minimum": 0
         }
     },
     "required": ["available"]
