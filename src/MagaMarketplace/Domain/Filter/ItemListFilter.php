@@ -59,6 +59,12 @@ class ItemListFilter extends ListFilter
     protected $dateCreated;
 
     /**
+     * Identifica se retorna o detalhamento do "images" no ItemResponse. Padrão: True
+     * @var bool
+     */
+    protected $expandImages;
+
+    /**
      * Identifica se retorna o detalhamento do "attributes" no ItemResponse. Padrão: False
      * @var bool
      */
@@ -105,6 +111,11 @@ class ItemListFilter extends ListFilter
         return $this->dateCreated;
     }
 
+    public function getExpandImages()
+    {
+        return $this->expandImages;
+    }
+
     public function getExpandAttributes()
     {
         return $this->expandAttributes;
@@ -148,6 +159,11 @@ class ItemListFilter extends ListFilter
     public function setDateCreated($dateCreated)
     {
         $this->dateCreated = $dateCreated;
+    }
+
+    public function setExpandImages($expandImages)
+    {
+        $this->expandImages = $this->boolValue($expandImages);
     }
 
     public function setExpandAttributes($expandAttributes)

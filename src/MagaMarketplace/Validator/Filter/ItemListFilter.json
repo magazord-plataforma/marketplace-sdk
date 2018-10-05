@@ -33,6 +33,10 @@
             "description": "Data/hora de criação inicial",
             "format": "date-time"
         },
+        "expandImages": {
+            "type": "boolean",
+            "description": "Identifica se retorna o detalhamento do \"images\" no ItemResponse. Padrão: True"
+        },
         "expandAttributes": {
             "type": "boolean",
             "description": "Identifica se retorna o detalhamento do \"attributes\" no ItemResponse. Padrão: False"
