@@ -44,6 +44,12 @@ class Transaction extends Domain\AbstractModel
      * @var string
      */
     protected $description;
+    
+    /**
+     * Detalhes
+     * @var string
+     */
+    protected $detail;
 
     /**
      * Mapeamento de propriedades que sao objetos ou arrays
@@ -65,10 +71,10 @@ class Transaction extends Domain\AbstractModel
 
     static public function getTypeList()
     {
-        return array(
+        return [
             self::TYPE_CREDIT => 'Credito',
             self::TYPE_DEBIT => 'Debito'
-        );
+        ];
     }
 
     public function getOrder()
@@ -85,7 +91,12 @@ class Transaction extends Domain\AbstractModel
     {
         return $this->description;
     }
-
+    
+    public function getDetail()
+    {
+        return $this->detail;
+    }
+    
     public function setDate($date)
     {
         $this->date = $date;
@@ -110,5 +121,9 @@ class Transaction extends Domain\AbstractModel
     {
         $this->description = $description;
     }
-
+    
+    public function setDetail($detail)
+    {
+        $this->detail = $detail;
+    }
 }

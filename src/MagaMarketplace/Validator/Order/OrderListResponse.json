@@ -42,6 +42,11 @@
                     "type": "string",
                     "description": "Data de nascimento",
                     "format": "date"
+                },
+                "ie": {
+                    "type": "string",
+                    "description": "Inscrição Estadual",
+                    "maxLength": 20
                 }
             },
             "required": ["documentNumber", "name"]

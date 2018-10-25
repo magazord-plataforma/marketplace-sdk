@@ -35,6 +35,12 @@ class Client extends Domain\AbstractModel
      * @var string
      */
     protected $birthDate;
+    
+    /**
+     * Inscrição Estadual (IE)
+     * @var String
+     */
+    protected $ie;
 
     /**
      * Mapeamento de propriedades que sao objetos ou arrays
@@ -62,6 +68,11 @@ class Client extends Domain\AbstractModel
     public function getBirthDate()
     {
         return $this->birthDate;
+    }
+    
+    public function getIe()
+    {
+        return $this->ie;
     }
 
     public function setDocumentNumber($documentNumber)
@@ -93,5 +104,9 @@ class Client extends Domain\AbstractModel
     {
         $this->birthDate = $birthDate;
     }
-
+    
+    public function setIe($ie)
+    {
+        $this->ie = $this->stringValue($ie);
+    }
 }
