@@ -56,12 +56,16 @@
         "sort": {
             "type": "string",
             "description": "Ordenação dos registros",
-            "enum": ["id", "dateCreated", "lastUpdate"]
+            "enum": ["id", "dateCreated", "lastUpdate", "latestShipDate"]
         },
         "sortDirection": {
             "type": "string",
             "description": "Direção da ordenação dos registros",
             "enum": ["asc", "desc"]
+        },
+        "exceededShippingDate": {
+            "type": "boolean",
+            "description": "Identifica se deve retornar apenas os pedidos com postagem atrasada. Padrão: False"
         }
     },
     "required": ["limit", "offset"]

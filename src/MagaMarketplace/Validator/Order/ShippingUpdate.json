@@ -40,9 +40,7 @@
                 "accessKey": {
                     "type": "string",
                     "description": "Chave de acesso",
-                    "minLength": 44,
-                    "maxLength": 44,
-                    "pattern": "^\\d{44}$"
+                    "maxLength": 50
                 }
             },
             "required": ["number", "line", "issueDate", "accessKey"]

@@ -55,18 +55,25 @@ class OrdersStatistics extends Domain\AbstractModel
     protected $statusReturned;
 
     /**
+     * Pedidos com data limite de postagem excedida
+     * @var Statistic
+     */
+    protected $exceededShippingDate;
+
+    /**
      * Mapeamento de propriedades que sao objetos ou arrays
      * @var array
      */
-    protected $_mapper = array(
+    protected $_mapper = [
         'total' => '\\MagaMarketplace\\Domain\\Report\\Statistic',
         'statusNew' => '\\MagaMarketplace\\Domain\\Report\\Statistic',
         'statusApproved' => '\\MagaMarketplace\\Domain\\Report\\Statistic',
         'statusShipped' => '\\MagaMarketplace\\Domain\\Report\\Statistic',
         'statusDelivered' => '\\MagaMarketplace\\Domain\\Report\\Statistic',
         'statusCanceled' => '\\MagaMarketplace\\Domain\\Report\\Statistic',
-        'statusReturned' => '\\MagaMarketplace\\Domain\\Report\\Statistic'
-    );
+        'statusReturned' => '\\MagaMarketplace\\Domain\\Report\\Statistic',
+        'exceededShippingDate' => '\\MagaMarketplace\\Domain\\Report\\Statistic'
+    ];
 
     public function getTotal()
     {
@@ -101,6 +108,11 @@ class OrdersStatistics extends Domain\AbstractModel
     public function getStatusReturned()
     {
         return $this->statusReturned;
+    }
+
+    public function getExceededShippingDate()
+    {
+        return $this->exceededShippingDate;
     }
 
     public function setTotal(Statistic $total = null)
@@ -138,6 +150,11 @@ class OrdersStatistics extends Domain\AbstractModel
         $this->statusReturned = $statusReturned;
     }
 
+    public function setExceededShippingDate(Statistic $exceededShippingDate)
+    {
+        $this->exceededShippingDate = $exceededShippingDate;
+    }
+
     public function init()
     {
         $this->setTotal(new Statistic());
@@ -147,6 +164,6 @@ class OrdersStatistics extends Domain\AbstractModel
         $this->setStatusDelivered(new Statistic());
         $this->setStatusCanceled(new Statistic());
         $this->setStatusReturned(new Statistic());
+        $this->setExceededShippingDate(new Statistic());
     }
-
 }

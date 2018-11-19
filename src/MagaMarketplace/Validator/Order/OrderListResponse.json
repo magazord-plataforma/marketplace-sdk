@@ -209,6 +209,112 @@
                 }
             }
         },
+        "TrackingResponse": {
+            "type": "object",
+            "definitions": {
+                "TrackingItem": {
+                    "type": "object",
+                    "properties": {
+                        "itemId": {
+                            "type": "string",
+                            "description": "Identificador do anúncio"
+                        },
+                        "quantity": {
+                            "type": "integer",
+                            "description": "Quantidade",
+                            "minimum": 1
+                        }
+                    },
+                    "required": ["itemId", "quantity"]
+                },
+                "Carrier": {
+                    "type": "object",
+                    "properties": {
+                        "documentNumber": {
+                            "type": "string",
+                            "description": "CNPJ",
+                            "maxLength": 18
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "Nome",
+                            "maxLength": 100
+                        }
+                    },
+                    "required": ["name"]
+                },
+                "Invoice": {
+                    "type": "object",
+                    "properties": {
+                        "number": {
+                            "type": "integer",
+                            "description": "Número",
+                            "minimum": 1,
+                            "maximum": 999999999
+                        },
+                        "line": {
+                            "type": "string",
+                            "description": "Série",
+                            "maxLength": 3
+                        },
+                        "issueDate": {
+                            "type": "string",
+                            "description": "Data/hora de emissão",
+                            "format": "date-time"
+                        },
+                        "accessKey": {
+                            "type": "string",
+                            "description": "Chave de acesso",
+                            "maxLength": 50
+                        }
+                    },
+                    "required": ["number", "line", "issueDate", "accessKey"]
+                }
+            },
+            "properties": {
+                "items": {
+                    "type": "array",
+                    "description": "Lista dos itens",
+                    "items": {
+                        "$ref": "#/definitions/TrackingItem"
+                    },
+                    "minItems": 1
+                },
+                "eventDate": {
+                    "type": "string",
+                    "description": "Data/hora",
+                    "format": "date-time"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status. (new, approved, shipped, delivered, canceled)"
+                },
+                "carrier": {
+                    "$ref": "#/definitions/Carrier",
+                    "description": "Transportadora"
+                },
+                "trackingNumber": {
+                    "type": "string",
+                    "description": "Código de rastreio na transportadora",
+                    "maxLength": 30
+                },
+                "trackingUrl": {
+                    "type": "string",
+                    "description": "Url da transportadora para o rastreamento do pedido",
+                    "format": "uri",
+                    "maxLength": 255
+                },
+                "invoice": {
+                    "$ref": "#/definitions/Invoice",
+                    "description": "Nota fiscal"
+                },
+                "reason": {
+                    "type": "string",
+                    "description": "Motivo de Cancelamento"
+                }
+            },
+            "required": ["items", "eventDate", "status"]
+        },
         "OrderResponse": {
             "properties": {
                 "id": {
@@ -247,7 +353,7 @@
                     "$ref": "#/definitions/ShippingAddress",
                     "description": "Endereço de entrega"
                 },
-                "latestShipDate" : {
+                "latestShipDate": {
                     "type": "string",
                     "description": "Data Limite de Postagem",
                     "format": "date"
@@ -283,9 +389,17 @@
                     "type": "string",
                     "description": "Data/hora última atualização",
                     "format": "date-time"
+                },
+                "tracking": {
+                    "type": "array",
+                    "description": "Tracking do Pedido",
+                    "items": {
+                        "$ref": "#/definitions/TrackingResponse"
+                    }
                 }
             },
             "required": [
+                "id",
                 "siteId",
                 "store",
                 "dateCreated",

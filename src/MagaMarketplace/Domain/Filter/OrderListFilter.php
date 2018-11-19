@@ -13,6 +13,7 @@ class OrderListFilter extends ListFilter
     const SORT_ID = 'id';
     const SORT_DATE_CREATED = 'dateCreated';
     const SORT_LAST_UPDATE = 'lastUpdate';
+    const SORT_LATEST_SHIP_DATE = 'latestShipDate';
 
     /**
      * Identificador
@@ -68,6 +69,12 @@ class OrderListFilter extends ListFilter
      */
     protected $expandTracking;
 
+    /**
+     * Identifica se deve retornar apenas os pedidos com postagem atrasada. Padrão: False
+     * @var bool
+     */
+    protected $exceededShippingDate;
+
     public function getId()
     {
         return $this->id;
@@ -111,6 +118,11 @@ class OrderListFilter extends ListFilter
     public function getExpandTracking()
     {
         return $this->expandTracking;
+    }
+
+    public function getExceededShippingDate()
+    {
+        return $this->exceededShippingDate;
     }
 
     public function setId($id)
@@ -158,4 +170,8 @@ class OrderListFilter extends ListFilter
         $this->expandTracking = $this->boolValue($expandTracking);
     }
 
+    public function setExceededShippingDate($exceededShippingDate)
+    {
+        $this->exceededShippingDate = $this->boolValue($exceededShippingDate);
+    }
 }

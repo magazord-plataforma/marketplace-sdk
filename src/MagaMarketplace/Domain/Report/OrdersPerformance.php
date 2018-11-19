@@ -37,6 +37,12 @@ class OrdersPerformance extends Domain\AbstractModel
     protected $delivery;
 
     /**
+     * Performance Atendimentos
+     * @var SellersPerformanceItem
+     */
+    protected $tickets;
+
+    /**
      * Mapeamento de propriedades que sao objetos ou arrays
      * @var array
      */
@@ -44,7 +50,8 @@ class OrdersPerformance extends Domain\AbstractModel
         'seller' => '\\MagaMarketplace\\Domain\\Seller',
         'cancel' => '\\MagaMarketplace\\Domain\\Report\\OrdersPerformanceItem',
         'shipping' => '\\MagaMarketplace\\Domain\\Report\\OrdersPerformanceItem',
-        'delivery' => '\\MagaMarketplace\\Domain\\Report\\OrdersPerformanceItem'
+        'delivery' => '\\MagaMarketplace\\Domain\\Report\\OrdersPerformanceItem',
+        'tickets' => '\\MagaMarketplace\\Domain\\Report\\SellersPerformanceItem',
     );
 
     public function getSeller()
@@ -87,4 +94,13 @@ class OrdersPerformance extends Domain\AbstractModel
         $this->delivery = $delivery;
     }
 
+    public function getTickets()
+    {
+        return $this->tickets;
+    }
+
+    public function setTickets(SellersPerformanceItem $tickets = null)
+    {
+        $this->tickets = $tickets;
+    }
 }
