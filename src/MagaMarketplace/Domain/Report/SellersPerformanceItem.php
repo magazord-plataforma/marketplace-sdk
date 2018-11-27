@@ -22,6 +22,6 @@ class SellersPerformanceItem extends OrdersPerformanceItem
 
     function setAverageTime($averageTime)
     {
-        $this->averageTime = $averageTime;
+        $this->averageTime = $this->floatValue($averageTime);
     }
 }
