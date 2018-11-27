@@ -49,16 +49,16 @@ class ReportSender extends AbstractSender
     }
 
     /**
-     * Performance dos pedidos
+     * Performance do lojista
      * @param Domain\Report\OrdersPerformanceFilter $filter
      * @return Domain\Report\OrdersPerformanceListResponse|Domain\Error
      */
-    public function getOrdersPerformance(Domain\Report\OrdersPerformanceFilter $filter)
+    public function getSellersPerformance(Domain\Report\OrdersPerformanceFilter $filter)
     {
         $this->reset();
         $this->setMethod(self::METHOD_GET);
         $this->setResponse(new Domain\Report\OrdersPerformanceListResponse());
-        return $this->send('/reports/orders/performance', null, (array) $filter->serialize());
+        return $this->send('/reports/sellers/performance', null, (array) $filter->serialize());
     }
 
     /**
