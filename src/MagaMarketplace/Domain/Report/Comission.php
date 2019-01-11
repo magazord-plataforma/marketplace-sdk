@@ -35,6 +35,12 @@ class Comission extends Domain\AbstractModel
     protected $category;
 
     /**
+     * Condição de pagamento
+     * @var string
+     */
+    protected $paymentCondition;
+
+    /**
      * Data de Início. Formato: YYYY-MM-DDThh:mm:ss.TZD
      * @var string
      */
@@ -58,6 +64,12 @@ class Comission extends Domain\AbstractModel
      */
     protected $value;
 
+    /**
+     * Quantidade de parcelas em que a comissão será paga
+     * @var int
+     */
+    protected $installment;
+
      /**
      * Mapeamento de propriedades que sao objetos ou arrays
      * @var array
@@ -73,12 +85,17 @@ class Comission extends Domain\AbstractModel
 
     public function getItem()
     {
-        return $this->Item;
+        return $this->item;
     }
 
     public function getCategory()
     {
         return $this->category;
+    }
+
+    public function getPaymentCondition()
+    {
+        return $this->paymentCondition;
     }
 
     public function getStartDate()
@@ -101,6 +118,11 @@ class Comission extends Domain\AbstractModel
         return $this->value;
     }
 
+    public function getInstallment()
+    {
+        return $this->installment;
+    }
+
     public function setId($id)
     {
         $this->id = $id;
@@ -108,12 +130,17 @@ class Comission extends Domain\AbstractModel
 
     public function setItem(Domain\Item\Item $Item = null)
     {
-        $this->Item = $Item;
+        $this->item = $Item;
     }
 
     public function setCategory($category)
     {
         $this->category = $category;
+    }
+
+    public function setPaymentCondition($paymentCondition)
+    {
+        $this->paymentCondition = $paymentCondition;
     }
 
     public function setStartDate($startDate)
@@ -134,6 +161,11 @@ class Comission extends Domain\AbstractModel
     public function setValue($value)
     {
         $this->value = $value;
+    }
+
+    public function setInstallment($installment)
+    {
+        $this->installment = $installment;
     }
 
     static public function getTypeList()
