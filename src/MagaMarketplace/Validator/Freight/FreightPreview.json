@@ -43,6 +43,10 @@
             "minimum": 0,
             "maximum": 99999999
         },
+        "sellerId": {
+            "type": "integer",
+            "description": "Código do Lojista"
+        },
         "items": {
             "type": "array",
             "description": "Itens",

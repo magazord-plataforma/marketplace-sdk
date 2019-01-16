@@ -19,6 +19,12 @@ class FreightPreview extends Domain\AbstractModel
     protected $zipCode;
 
     /**
+     * Código do Lojista
+     * @var int
+     */
+    protected $sellerId;
+
+    /**
      * Lista dos itens
      * @var FreightPreviewItem[]
      */
@@ -37,6 +43,11 @@ class FreightPreview extends Domain\AbstractModel
         return $this->zipCode;
     }
 
+    public function getSellerId()
+    {
+        return $this->sellerId;
+    }
+
     public function getItems()
     {
         return $this->items;
@@ -45,6 +56,11 @@ class FreightPreview extends Domain\AbstractModel
     public function setZipCode($zipCode)
     {
         $this->zipCode = $this->intValue($zipCode);
+    }
+
+    public function setSellerId($sellerId)
+    {
+        $this->sellerId = $this->intValue($sellerId);
     }
 
     public function setItems(array $items = null)
