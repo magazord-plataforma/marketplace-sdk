@@ -24,6 +24,20 @@ class Status extends Domain\AbstractModel
      */
     protected $statusDescription;
 
+    /**
+     * Links de acesso
+     * @var ItemLink[]
+     */
+    protected $links;
+
+    /**
+     * Mapeamento de propriedades que sao objetos ou arrays
+     * @var array
+     */
+    protected $_mapper = array(
+        'links' => '\\MagaMarketplace\\Domain\\Item\\ItemLink'
+    );
+
     public function getStatus()
     {
         return $this->status;
@@ -42,6 +56,16 @@ class Status extends Domain\AbstractModel
     public function setStatusDescription($statusDescription)
     {
         $this->statusDescription = $statusDescription;
+    }
+
+    public function getLinks()
+    {
+        return $this->links;
+    }
+
+    public function setLinks(array $links = null)
+    {
+        $this->links = $links;
     }
 
 }

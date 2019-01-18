@@ -209,9 +209,33 @@
                 "statusDescription": {
                     "type": "string",
                     "description": "Observação sobre o status"
+                },
+                "links": {
+                    "type": "array",
+                    "description": "Links de acesso",
+                    "items": {
+                        "$ref": "#/definitions/ItemLink"
+                    }
                 }
             },
             "required": ["idMarketplace", "id", "productId", "brand", "title", "description", "category", "images", "stock", "price", "weight", "active", "status"]
+        },
+        "ItemLink": {
+            "type": "object",
+            "properties": {
+                "store": {
+                    "type": "string",
+                    "description": "Loja do marketplace",
+                    "maxLength": 18
+                },
+                "href": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link para acessar o recurso",
+                    "maxLength": 255
+                }
+            },
+            "required": ["store", "href"]
         }
     },
     "properties": {

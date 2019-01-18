@@ -40,6 +40,12 @@ class ItemResponse extends Item
     protected $statusDescription;
 
     /**
+     * Links de acesso
+     * @var ItemLink[]
+     */
+    protected $links;
+
+    /**
      * Mapeamento de propriedades que sao objetos ou arrays
      * @var array
      */
@@ -48,7 +54,8 @@ class ItemResponse extends Item
         'price' => '\\MagaMarketplace\\Domain\\Item\\Price',
         'dimensions' => '\\MagaMarketplace\\Domain\\Item\\Dimension',
         'variations' => '\\MagaMarketplace\\Domain\\Item\\Variation',
-        'attributes' => '\\MagaMarketplace\\Domain\\Item\\Attribute'
+        'attributes' => '\\MagaMarketplace\\Domain\\Item\\Attribute',
+        'links' => '\\MagaMarketplace\\Domain\\Item\\ItemLink'
     );
 
     public function getIdMarketplace()
@@ -99,6 +106,16 @@ class ItemResponse extends Item
     public function setStatusDescription($statusDescription)
     {
         $this->statusDescription = $statusDescription;
+    }
+
+    public function getLinks()
+    {
+        return $this->links;
+    }
+
+    public function setLinks(array $links = null)
+    {
+        $this->links = $links;
     }
 
 }

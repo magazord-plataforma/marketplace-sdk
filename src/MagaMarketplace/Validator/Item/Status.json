@@ -1,14 +1,41 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
-    "title": "Status schema.",
+    "definitions": {
+        "ItemLink": {
+            "type": "object",
+            "properties": {
+                "store": {
+                    "type": "string",
+                    "description": "Loja do marketplace",
+                    "maxLength": 18
+                },
+                "href": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link para acessar o recurso",
+                    "maxLength": 255
+                }
+            },
+            "required": ["store", "href"]
+        }
+    },
     "properties": {
         "status": {
             "type": "string",
-            "enum": [ "pending", "approved", "rejected", "selling"]
+            "description": "Status no marketplace",
+            "enum": ["pending", "approved", "rejected", "selling"]
         },
         "statusDescription": {
-            "type": "string"
+            "type": "string",
+            "description": "Observação sobre o status"
+        },
+        "links": {
+            "type": "array",
+            "description": "Links de acesso",
+            "items": {
+                "$ref": "#/definitions/ItemLink"
+            }
         }
     },
     "required": ["status"]
