@@ -76,6 +76,12 @@ class Order extends Domain\AbstractModel
 
     /**
      * Identificador da opção de envio
+     * @var int
+     */
+    protected $shippingServiceId;
+
+    /**
+     * Opção de envio
      * @var string
      */
     protected $shippingService;
@@ -219,6 +225,11 @@ class Order extends Domain\AbstractModel
         return $this->estimatedDeliveryDate;
     }
 
+    public function getShippingServiceId()
+    {
+        return $this->shippingServiceId;
+    }
+
     public function getShippingService()
     {
         return $this->shippingService;
@@ -294,6 +305,11 @@ class Order extends Domain\AbstractModel
     public function setEstimatedDeliveryDate($estimatedDeliveryDate)
     {
         $this->estimatedDeliveryDate = $estimatedDeliveryDate;
+    }
+
+    public function setShippingServiceId($shippingServiceId)
+    {
+        $this->shippingServiceId = $this->intValue($shippingServiceId);
     }
 
     public function setShippingService($shippingService)
