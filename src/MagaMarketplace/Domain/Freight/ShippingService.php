@@ -14,7 +14,7 @@ class ShippingService extends Domain\AbstractModel
 
     /**
      * Identificador
-     * @var integer
+     * @var string
      */
     protected $id;
 
@@ -58,12 +58,12 @@ class ShippingService extends Domain\AbstractModel
 
     public function setId($id)
     {
-        $this->id = $this->intValue($id);
+        $this->id = $this->stringValue($id);
     }
 
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = $this->stringValue($name);
     }
 
     public function setPrice($price)

@@ -13,8 +13,6 @@ class Comission extends Domain\AbstractModel
 
     const TYPE_VALUE = 'value';
     const TYPE_PERCENT = 'percent';
-    const TYPE_FREIGHT_VALUE = 'freight_value';
-    const TYPE_COMPOSITE_CASCADE = 'composite_cascade';
 
     /**
      * Identificador da Comissão
@@ -172,9 +170,7 @@ class Comission extends Domain\AbstractModel
     {
         return [
             self::TYPE_VALUE => 'Valor',
-            self::TYPE_PERCENT => 'Percentual',
-            self::TYPE_FREIGHT_VALUE => 'Valor Frete',
-            self::TYPE_COMPOSITE_CASCADE => 'Composto/Cascata'
+            self::TYPE_PERCENT => 'Percentual'
         ];
     }
 }

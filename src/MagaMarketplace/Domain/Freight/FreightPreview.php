@@ -48,9 +48,12 @@ class FreightPreview extends Domain\AbstractModel
         return $this->sellerId;
     }
 
+    /**
+     * @return FreightPreviewItem[]
+     */
     public function getItems()
     {
-        return $this->items;
+        return $this->defaultValue($this->items, array());
     }
 
     public function setZipCode($zipCode)

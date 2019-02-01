@@ -15,9 +15,11 @@ class Validator
      * @param mixed $json
      * @return boolean|Domain\Error
      */
-    static public function validate(Domain\AbstractModel $model, $json)
+    static public function validate(Domain\AbstractModel $model, $json, $file = false)
     {
-        $file = self::getJsonSchemaFile($model);
+        if ($file === false) {
+            $file = self::getJsonSchemaFile($model);
+        }
         if (file_exists($file)) {
             $validator = new \JsonSchema\Validator();
             $validator->check($json, (object) array('$ref' => 'file://' . $file));

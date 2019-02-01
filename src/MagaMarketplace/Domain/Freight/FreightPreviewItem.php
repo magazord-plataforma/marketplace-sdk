@@ -25,6 +25,12 @@ class FreightPreviewItem extends Domain\AbstractModel
     protected $quantity;
 
     /**
+     * Anúncio (PROPRIEDADE INTERNA)
+     * @var Domain\Item\ItemResponse
+     */
+    protected $_itemResponse;
+
+    /**
      * Mapeamento de propriedades que sao objetos ou arrays
      * @var array
      */
@@ -50,6 +56,16 @@ class FreightPreviewItem extends Domain\AbstractModel
     public function setQuantity($quantity)
     {
         $this->quantity = $this->intValue($quantity);
+    }
+
+    public function getItemResponse()
+    {
+        return $this->_itemResponse;
+    }
+
+    public function setItemResponse(Domain\Item\ItemResponse $itemResponse = null)
+    {
+        $this->_itemResponse = $itemResponse;
     }
 
 }

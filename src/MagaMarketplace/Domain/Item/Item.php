@@ -37,7 +37,7 @@ class Item extends Domain\AbstractModel
     protected $title;
 
     /**
-     * Descrição detalhada. Pode conter tags de formatação HTML
+     * Descrição detalhada.
      * @var string
      */
     protected $description;

@@ -18,7 +18,7 @@
         "type": {
             "type": "string",
             "description": "Tipo da Comissão",
-            "enum": ["value", "percent", "freight_value", "composite_cascade"]
+            "enum": ["value", "percent"]
         },
         "limit": {
             "type": "integer",

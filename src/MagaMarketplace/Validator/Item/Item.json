@@ -116,7 +116,7 @@
         },
         "description": {
             "type": "string",
-            "description": "Descrição detalhada. Pode conter tags de formatação HTML"
+            "description": "Descrição detalhada."
         },
         "category": {
             "type": "string",
