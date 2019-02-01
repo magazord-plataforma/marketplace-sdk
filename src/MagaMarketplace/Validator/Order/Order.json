@@ -248,8 +248,9 @@
             "format": "date"
         },
         "shippingServiceId": {
-            "type": "integer",
-            "description": "Identificador da opção de envio"
+            "type": "string",
+            "description": "Identificador da opção de envio",
+            "maxLength": 50
         },
         "shippingService": {
             "type": "string",

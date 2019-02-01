@@ -76,7 +76,7 @@ class Order extends Domain\AbstractModel
 
     /**
      * Identificador da opção de envio
-     * @var int
+     * @var string
      */
     protected $shippingServiceId;
 
@@ -309,7 +309,7 @@ class Order extends Domain\AbstractModel
 
     public function setShippingServiceId($shippingServiceId)
     {
-        $this->shippingServiceId = $this->intValue($shippingServiceId);
+        $this->shippingServiceId = $this->stringValue($shippingServiceId);
     }
 
     public function setShippingService($shippingService)
