@@ -247,10 +247,10 @@
             "description": "Data estimada de entrega",
             "format": "date"
         },
-        "shippingServiceId": {
+        "shippingServiceInfo": {
             "type": "string",
-            "description": "Identificador da opção de envio",
-            "maxLength": 50
+            "description": "Informações adicionais da opção de envio",
+            "maxLength": 500
         },
         "shippingService": {
             "type": "string",

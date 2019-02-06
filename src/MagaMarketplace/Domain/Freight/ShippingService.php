@@ -36,6 +36,20 @@ class ShippingService extends Domain\AbstractModel
      */
     protected $deliveryTime;
 
+    /**
+     * Mensagem/observação (apresentada para o cliente no site). Ex: Necessário retirada no balcão - Correios
+     * @var string
+     */
+    protected $message;
+
+    /**
+     * Informações adicionais, pode ser usado pela plataforma para retornar
+     * informações necessárias na importação do pedido (não apresentada para o cliente)
+     * Valor irá retornar no "shippingServiceInfo" do "OrderResponse"
+     * @var string
+     */
+    protected $additionalInfo;
+
     public function getId()
     {
         return $this->id;
@@ -74,6 +88,26 @@ class ShippingService extends Domain\AbstractModel
     public function setDeliveryTime($deliveryTime)
     {
         $this->deliveryTime = $this->intValue($deliveryTime);
+    }
+
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    public function setMessage($message)
+    {
+        $this->message = $this->stringValue($message);
+    }
+
+    public function getAdditionalInfo()
+    {
+        return $this->additionalInfo;
+    }
+
+    public function setAdditionalInfo($additionalInfo)
+    {
+        $this->additionalInfo = $this->stringValue($additionalInfo);
     }
 
 }

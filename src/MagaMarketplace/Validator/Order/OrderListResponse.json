@@ -361,9 +361,9 @@
                     "description": "Data estimada de entrega",
                     "format": "date"
                 },
-                "shippingServiceId": {
-                    "type": "integer",
-                    "description": "Identificador da opção de envio"
+                "shippingServiceInfo": {
+                    "type": "string",
+                    "description": "Informações adicionais da opção de envio"
                 },
                 "shippingService": {
                     "type": "string",
