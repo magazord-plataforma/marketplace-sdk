@@ -44,12 +44,18 @@ class Transaction extends Domain\AbstractModel
      * @var string
      */
     protected $description;
-    
+
     /**
      * Detalhes
      * @var string
      */
     protected $detail;
+
+    /**
+     * Forma de Pagamento
+     * @var string
+     */
+    protected $paymentMethod;
 
     /**
      * Mapeamento de propriedades que sao objetos ou arrays
@@ -91,12 +97,17 @@ class Transaction extends Domain\AbstractModel
     {
         return $this->description;
     }
-    
+
     public function getDetail()
     {
         return $this->detail;
     }
-    
+
+    public function getPaymentMethod()
+    {
+        return $this->paymentMethod;
+    }
+
     public function setDate($date)
     {
         $this->date = $date;
@@ -121,9 +132,14 @@ class Transaction extends Domain\AbstractModel
     {
         $this->description = $description;
     }
-    
+
     public function setDetail($detail)
     {
         $this->detail = $detail;
+    }
+
+    public function setPaymentMethod($paymentMethod)
+    {
+        $this->paymentMethod = $paymentMethod;
     }
 }

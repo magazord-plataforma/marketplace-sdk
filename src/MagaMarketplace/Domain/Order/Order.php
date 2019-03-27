@@ -24,6 +24,12 @@ class Order extends Domain\AbstractModel
      * @var string
      */
     protected $siteId;
+    
+    /**
+     * Número de pedido de terceiro
+     * @var string
+     */
+    protected $thirdPartyId;
 
     /**
      * Loja do marketplace
@@ -75,7 +81,7 @@ class Order extends Domain\AbstractModel
     protected $estimatedDeliveryDate;
 
     /**
-     * Identificador da opção de envio
+     * Informações adicionais da opção de envio
      * @var string
      */
     protected $shippingServiceInfo;
@@ -335,6 +341,16 @@ class Order extends Domain\AbstractModel
     public function setLastUpdate($lastUpdate)
     {
         $this->lastUpdate = $lastUpdate;
+    }
+    
+    public function getThirdPartyId()
+    {
+        return $this->thirdPartyId;
+    }
+
+    public function setThirdPartyId($thirdPartyId)
+    {
+        $this->thirdPartyId = $thirdPartyId;
     }
 
 }
