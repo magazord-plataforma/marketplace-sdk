@@ -247,22 +247,22 @@ class Item extends Domain\AbstractModel
 
     public function setBrand($brand)
     {
-        $this->brand = $brand;
+        $this->brand = $this->stringValue($brand);
     }
 
     public function setTitle($title)
     {
-        $this->title = $title;
+        $this->title = $this->stringValue($title);
     }
 
     public function setDescription($description)
     {
-        $this->description = $description;
+        $this->description = $this->stringValue($description);
     }
 
     public function setCategory($category)
     {
-        $this->category = $category;
+        $this->category = $this->stringValue($category);
     }
 
     public function setImages(array $images = null)

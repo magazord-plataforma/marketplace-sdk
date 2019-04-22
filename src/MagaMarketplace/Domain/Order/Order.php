@@ -24,7 +24,7 @@ class Order extends Domain\AbstractModel
      * @var string
      */
     protected $siteId;
-    
+
     /**
      * Número de pedido de terceiro
      * @var string
@@ -342,7 +342,7 @@ class Order extends Domain\AbstractModel
     {
         $this->lastUpdate = $lastUpdate;
     }
-    
+
     public function getThirdPartyId()
     {
         return $this->thirdPartyId;
@@ -350,7 +350,7 @@ class Order extends Domain\AbstractModel
 
     public function setThirdPartyId($thirdPartyId)
     {
-        $this->thirdPartyId = $thirdPartyId;
+        $this->thirdPartyId = $this->stringValue($thirdPartyId);
     }
 
 }

@@ -134,6 +134,7 @@ class AbstractModel
             }
             $this->$setter($valueSetter);
         }
+        return $this;
     }
 
     public function asString()
@@ -161,7 +162,7 @@ class AbstractModel
 
     protected function intValue($value)
     {
-        if ($value !== null) {
+        if ($value !== null && !is_int($value)) {
             return (int) $value;
         }
         return $value;
@@ -169,7 +170,7 @@ class AbstractModel
 
     protected function floatValue($value)
     {
-        if ($value !== null) {
+        if ($value !== null && !is_float($value)) {
             return (float) $value;
         }
         return $value;
@@ -179,7 +180,7 @@ class AbstractModel
     {
         if ($value === '') {
             return null;
-        } else if ($value !== null) {
+        } else if ($value !== null && !is_string($value)) {
             return (string) $value;
         }
         return $value;
