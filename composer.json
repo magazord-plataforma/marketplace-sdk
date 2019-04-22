@@ -1,7 +1,7 @@
 {
     "name": "magazord-plataforma/marketplace-sdk",
     "description": "SDK de integração com a API do marketplace da plataforma Magazord",
-    "keywords": ["marketplace", "magazord", "magamobi"],
+    "keywords": ["marketplace", "magazord", "magamobi", "cissamagazine"],
     "type": "library",
     "license": "MIT",    
     "require-dev": {
