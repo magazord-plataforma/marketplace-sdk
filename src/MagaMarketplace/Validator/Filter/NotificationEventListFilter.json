@@ -1,0 +1,67 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "dateCreated": {
+            "type": "string",
+            "description": "Data/hora de criação inicial",
+            "format": "date-time"
+        },
+        "sellerId": {
+            "type": "integer",
+            "description": "Código do Lojista"
+        },
+        "status": {
+            "type": "integer",
+            "description": "Status",
+            "enum": [1, 2, 3, 4]
+        },
+        "toType": {
+            "type": "integer",
+            "description": "Tipo Destino",
+            "enum": [1, 2]
+        },
+        "to": {
+            "type": "string",
+            "description": "Destino"
+        },
+        "resourceRel": {
+            "type": "string",
+            "description": "Tipo do recurso"
+        },
+        "resourceId": {
+            "type": "string",
+            "description": "Identificador do recurso"
+        },
+        "resourceStatus": {
+            "type": "string",
+            "description": "Status do recurso"
+        },
+        "response": {
+            "type": "string",
+            "description": "Resposta"
+        },
+        "limit": {
+            "type": "integer",
+            "description": "Quantidade de registros. Padrão: 50",
+            "minimum": 0,
+            "maximum": 50
+        },
+        "offset": {
+            "type": "integer",
+            "description": "Posição inicial da consulta. Padrão: 0",
+            "minimum": 0
+        },
+        "sort": {
+            "type": "string",
+            "description": "Ordenação dos registros",
+            "enum": ["id"]
+        },
+        "sortDirection": {
+            "type": "string",
+            "description": "Direção da ordenação dos registros",
+            "enum": ["asc", "desc"]
+        }
+    },
+    "required": ["limit", "offset"]
+}
