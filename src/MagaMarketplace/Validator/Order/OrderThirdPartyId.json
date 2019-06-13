@@ -1,0 +1,12 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "thirdPartyId" : {
+            "type": "string",
+            "description": "Numero de pedido de terceiro",
+            "maxLength": 20
+        }
+    },
+    "required": []
+}

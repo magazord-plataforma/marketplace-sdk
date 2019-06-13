@@ -28,6 +28,12 @@ class OrderListFilter extends ListFilter
     protected $siteId;
 
     /**
+     * Número de pedido de terceiro
+     * @var string
+     */
+    protected $thirdPartyId;
+
+    /**
      * Data/hora de criação. Formato: YYYY-MM-DDThh:mm:ss.TZD
      * @var string
      */
@@ -85,6 +91,11 @@ class OrderListFilter extends ListFilter
         return $this->siteId;
     }
 
+    public function getThirdPartyId()
+    {
+        return $this->thirdPartyId;
+    }
+
     public function getDateCreated()
     {
         return $this->dateCreated;
@@ -135,6 +146,11 @@ class OrderListFilter extends ListFilter
         $this->siteId = $this->stringValue($siteId);
     }
 
+    public function setThirdPartyId($thirdPartyId)
+    {
+        $this->thirdPartyId = $this->stringValue($thirdPartyId);
+    }
+
     public function setDateCreated($dateCreated)
     {
         $this->dateCreated = $dateCreated;
@@ -174,4 +190,5 @@ class OrderListFilter extends ListFilter
     {
         $this->exceededShippingDate = $this->boolValue($exceededShippingDate);
     }
+
 }

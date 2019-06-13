@@ -33,7 +33,8 @@
             "format": "date-time"
         },
         "reason": {
-            "type": "string"
+            "type": "string",
+            "description": "Motivo"
         }
     },
     "required": ["items","eventDate","reason"]

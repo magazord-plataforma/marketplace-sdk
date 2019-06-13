@@ -37,7 +37,8 @@ class Item extends Domain\AbstractModel
     protected $title;
 
     /**
-     * Descrição detalhada.
+     * Descrição detalhada. Não permite HTML (retirado automaticamente se enviado).
+     * Máximo de 3000 caracteres (será cortado automaticamente se enviado mais).
      * @var string
      */
     protected $description;

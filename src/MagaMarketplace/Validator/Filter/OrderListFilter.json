@@ -11,6 +11,10 @@
             "type": "string",
             "description": "Número do pedido para o cliente"
         },
+        "thirdPartyId" : {
+            "type": "string",
+            "description": "Numero de pedido de terceiro"
+        },
         "dateCreated": {
             "type": "string",
             "description": "Data/hora de criação inicial",

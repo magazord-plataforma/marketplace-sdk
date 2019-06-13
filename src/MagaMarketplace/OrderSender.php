@@ -134,6 +134,20 @@ class OrderSender extends AbstractSender
     }
 
     /**
+     * Voltar o status do pedido para novo (ADM)
+     * @param string $id
+     * @param Domain\Order\Reopen $tracking
+     * @return Domain\AbstractModel|Domain\Error
+     */
+    public function putReopen($id, Domain\Order\Reopen $tracking)
+    {
+        $this->reset();
+        $this->setMethod(self::METHOD_PUT);
+        $this->setResponse(new Domain\AbstractModel());
+        return $this->send('/orders/' . $id . '/reopen', $tracking);
+    }
+
+    /**
      * Atualização status do pedido conforme $tracking
      * @param string $id
      * @param Domain\Order\Tracking $tracking
@@ -142,6 +156,8 @@ class OrderSender extends AbstractSender
     public function putStatus($id, Domain\Order\Tracking $tracking)
     {
         switch ($tracking->getStatus()) {
+            case Domain\Order\Order::STATUS_NEW:
+                return $this->putReopen($id, $tracking);
             case Domain\Order\Order::STATUS_APPROVED:
                 return $this->putApproved($id, $tracking);
             case Domain\Order\Order::STATUS_CANCELED:
@@ -153,6 +169,20 @@ class OrderSender extends AbstractSender
             case Domain\Order\Order::STATUS_RETURNED:
                 return $this->putReturned($id, $tracking);
         }
+    }
+
+    /**
+     * Atualização do numero de pedido de terceiro
+     * @param string $id
+     * @param Domain\Order\OrderThirdPartyId $thirdPartyId
+     * @return Domain\AbstractModel|Domain\Error
+     */
+    public function putThirdPartyId($id, Domain\Order\OrderThirdPartyId $thirdPartyId)
+    {
+        $this->reset();
+        $this->setMethod(self::METHOD_PUT);
+        $this->setResponse(new Domain\AbstractModel());
+        return $this->send('/orders/' . $id . '/thirdPartyId', $thirdPartyId);
     }
 
 }
