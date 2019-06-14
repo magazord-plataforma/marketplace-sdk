@@ -2,6 +2,28 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "title": "Message Ticket schema.",
+    "definitions": {
+        "Attachment": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Nome do arquivo",
+                    "maxLength": 100
+                },
+                "mimeType": {
+                    "type": "string",
+                    "description": "Tipo do conteúdo do arquivo",
+                    "maxLength": 100
+                },
+                "file": {
+                    "type": "string",
+                    "description": "Conteúdo binário do arquivo encodado em base64"
+                }
+            },
+            "required": ["name", "mimeType", "file"]
+        }
+    },
     "properties": {
         "message": {
             "type": "string",
@@ -14,6 +36,13 @@
         "userName": {
             "type": "string",
             "description": "Usuário"
+        },
+        "attachments": {
+            "type": "array",
+            "description": "Anexos",
+            "items": {
+                "$ref": "#/definitions/Attachment"
+            }
         }
     },
     "required": ["message", "sendClient"]

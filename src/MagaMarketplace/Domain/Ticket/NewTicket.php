@@ -61,12 +61,19 @@ class NewTicket extends Domain\AbstractModel
     protected $sendClient;
 
     /**
+     * Anexos
+     * @var Attachment[]
+     */
+    protected $attachments;
+
+    /**
      * Mapeamento de propriedades que sao objetos ou arrays
      * @var array
      */
     protected $_mapper = array(
         'client' => '\\MagaMarketplace\\Domain\\Order\\Client',
-        'order' => '\\MagaMarketplace\\Domain\\Link'
+        'order' => '\\MagaMarketplace\\Domain\\Link',
+        'attachments' => '\\MagaMarketplace\\Domain\\Ticket\\Attachment'
     );
 
     public function getDateCreated()
@@ -149,4 +156,20 @@ class NewTicket extends Domain\AbstractModel
         $this->sendClient = $this->boolValue($sendClient);
     }
 
+    public function getAttachments()
+    {
+        return $this->attachments;
+    }
+
+    public function setAttachments(Array $attachments = null)
+    {
+        $this->attachments = $attachments;
+    }
+
+    public function newAttachment(Attachment $attachment)
+    {
+        $attachments = $this->getAttachments() ?: [];
+        $attachments[] = $attachment;
+        $this->setAttachments($attachment);
+    }
 }

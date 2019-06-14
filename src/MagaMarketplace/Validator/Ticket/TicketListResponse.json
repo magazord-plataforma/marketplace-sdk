@@ -68,6 +68,13 @@
                 "userName": {
                     "type": "string",
                     "description": "Usuário"
+                },
+                "attachments": {
+                    "type": "array",
+                    "description": "Anexos",
+                    "items": {
+                        "$ref": "#/definitions/AttachmentResponse"
+                    }
                 }
             },
             "required": ["id", "dateCreated", "message", "sendClient"]
@@ -131,6 +138,55 @@
                 "subject",
                 "client"
             ]
+        },
+        "AttachmentResponse": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "ID do arquivo"
+                },
+                "size": {
+                    "type": "string",
+                    "description": "Tamanho do arquivo"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Nome do arquivo"
+                },
+                "mimeType": {
+                    "type": "string",
+                    "description": "Tipo do conteúdo do arquivo"
+                },
+                "file": {
+                    "type": "string",
+                    "description": "Conteúdo binário do arquivo encodado em base64"
+                }
+            },
+            "required": ["id", "size", "name", "mimeType"]
+        },
+        "Link": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Identificador do recurso"
+                },
+                "rel": {
+                    "type": "string",
+                    "enum": ["items", "orders", "tickets"],
+                    "description": "Tipo do recurso: items, orders, tickets"
+                },
+                "href": {
+                    "type": "string",
+                    "description": "Link para acessar o recurso"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Descrição do recurso"
+                }
+            },
+            "required": ["id", "rel"]
         }
     },
     "properties": {

@@ -3,6 +3,26 @@
     "type": "object",
     "title": "New Ticket schema.",
     "definitions": {
+        "Attachment": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Nome do arquivo",
+                    "maxLength": 100
+                },
+                "mimeType": {
+                    "type": "string",
+                    "description": "Tipo do conteúdo do arquivo",
+                    "maxLength": 100
+                },
+                "file": {
+                    "type": "string",
+                    "description": "Conteúdo binário do arquivo encodado em base64"
+                }
+            },
+            "required": ["name", "mimeType", "file"]
+        },
         "Client": {
             "type": "object",
             "properties": {
@@ -66,6 +86,13 @@
         "sendClient": {
             "type": "boolean",
             "description": "Mensagem enviada/disponível para o cliente?"
+        },
+        "attachments": {
+            "type": "array",
+            "description": "Anexos",
+            "items": {
+                "$ref": "#/definitions/Attachment"
+            }
         }
     },
     "required": ["type", "subject", "client", "message", "sendClient"]

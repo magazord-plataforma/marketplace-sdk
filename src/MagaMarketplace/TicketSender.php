@@ -63,4 +63,17 @@ class TicketSender extends AbstractSender
         return $this->send('/tickets/' . $id . '/messages', $message);
     }
 
+    /**
+     * Consulta de um anexo do atendimento
+     * @param int $ticketId
+     * @param int $attachmentId
+     * @return Domain\Ticket\Attachment
+     */
+    public function getAttachment($ticketId, $attachmentId)
+    {
+        $this->reset();
+        $this->setMethod(self::METHOD_GET);
+        $this->setResponse(new Domain\Ticket\Attachment());
+        return $this->send('/tickets/' . $ticketId . '/attachments/' . $attachmentId);
+    }
 }
