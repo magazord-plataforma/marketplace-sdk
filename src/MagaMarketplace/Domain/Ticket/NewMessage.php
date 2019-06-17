@@ -88,6 +88,6 @@ class NewMessage extends Domain\AbstractModel
     {
         $attachments = $this->getAttachments() ?: [];
         $attachments[] = $attachment;
-        $this->setAttachments($attachment);
+        $this->setAttachments($attachments);
     }
 }
