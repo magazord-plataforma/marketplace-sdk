@@ -47,6 +47,11 @@
         }
     },
     "properties": {
+        "eventDate": {
+            "type": "string",
+            "description": "Data/hora",
+            "format": "date-time"
+        },
         "carrier": {
             "$ref": "#/definitions/Carrier",
             "description": "Transportadora"

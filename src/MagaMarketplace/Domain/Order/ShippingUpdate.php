@@ -13,6 +13,12 @@ class ShippingUpdate extends Domain\AbstractModel
 {
 
     /**
+     * Data/hora. Formato: YYYY-MM-DDThh:mm:ss.TZD
+     * @var string
+     */
+    protected $eventDate;
+
+    /**
      * Transportadora
      * @var Carrier
      */
@@ -45,6 +51,11 @@ class ShippingUpdate extends Domain\AbstractModel
         'invoice' => '\\MagaMarketplace\\Domain\\Order\\Invoice'
     );
 
+    public function getEventDate()
+    {
+        return $this->eventDate;
+    }
+
     public function getCarrier()
     {
         return $this->carrier;
@@ -63,6 +74,11 @@ class ShippingUpdate extends Domain\AbstractModel
     public function getInvoice()
     {
         return $this->invoice;
+    }
+
+    public function setEventDate($eventDate)
+    {
+        $this->eventDate = $eventDate;
     }
 
     public function setCarrier(Carrier $carrier = null)
