@@ -24,6 +24,12 @@ class MessageResponse extends NewMessage
      */
     protected $dateCreated;
 
+    /**
+     * Status do atendimento no momento da resposta
+     * @var string
+     */
+    protected $status;
+
     public function getId()
     {
         return $this->id;
@@ -44,4 +50,13 @@ class MessageResponse extends NewMessage
         $this->dateCreated = $dateCreated;
     }
 
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
 }

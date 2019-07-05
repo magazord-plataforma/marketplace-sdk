@@ -45,6 +45,9 @@ class Validator
             $message = 'O atributo deve conter no minimo ' . $error['minLength'] . ' caracteres';
         } else if ($error['constraint'] == 'pattern') {
             $message = 'O atributo deve atender o formato ' . $error['pattern'];
+            if ($error['pattern'] == '^[a-zA-Z0-9\\-_\\.]*$') {
+                $message = 'O atributo nao pode conter caracteres especiais. Sao aceitos letras, numeros, ponto(.), hifen(-) e underline(_).';
+            }
         } else if ($error['constraint'] == 'format' && $error['format'] == 'uri') {
             $message = 'URL no formato invalido. Ela deve ser informada completa, incluindo http:// ou https://';
         } else if ($error['constraint'] == 'format' && $error['format'] == 'date-time') {

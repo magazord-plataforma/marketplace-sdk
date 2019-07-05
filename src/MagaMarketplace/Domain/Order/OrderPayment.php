@@ -71,4 +71,18 @@ class OrderPayment extends Domain\AbstractModel
         $this->value = $this->floatValue($value);
     }
 
+    static public function isCard($method)
+    {
+        return in_array($method, array(
+            self::METHOD_MASTERCARD,
+            self::METHOD_VISA,
+            self::METHOD_DINERS,
+            self::METHOD_HIPERCARD,
+            self::METHOD_AMERICAN_EXPRESS,
+            self::METHOD_AURA,
+            self::METHOD_ELO,
+            self::METHOD_DISCOVER
+        ));
+    }
+
 }
