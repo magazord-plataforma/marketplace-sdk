@@ -146,9 +146,7 @@ abstract class AbstractSender
         $this->authenticateClient($http);
         $http->auto_parse = false;
         if ($body) {
-            $this->request = $body;
-            $this->requestString = $body->asString();
-            $http->body($this->requestString, 'application/json');
+            $this->parseBody($http, $body);
         }
         try {
             if ($this->responseHttp = $http->send()) {
@@ -161,6 +159,16 @@ abstract class AbstractSender
             call_user_func($this->logger, $this);
         }
         return $this->response;
+    }
+
+    /**
+     * @param \MagaMarketplace\Domain\AbstractModel $body
+     */
+    protected function parseBody(\Httpful\Request $http, Domain\AbstractModel $body)
+    {
+        $this->request = $body;
+        $this->requestString = $body->asString();
+        $http->body($this->requestString, 'application/json');
     }
 
     protected function createInstanceError($message, $httpCode)
