@@ -40,7 +40,7 @@ class Transaction extends Domain\AbstractModel
     protected $value;
 
     /**
-     * Observações
+     * Descrição
      * @var string
      */
     protected $description;
@@ -56,6 +56,12 @@ class Transaction extends Domain\AbstractModel
      * @var string
      */
     protected $paymentMethod;
+
+    /**
+     * Número da Nota Fiscal
+     * @var integer
+     */
+    protected $invoiceNumber;
 
     /**
      * Mapeamento de propriedades que sao objetos ou arrays
@@ -108,6 +114,11 @@ class Transaction extends Domain\AbstractModel
         return $this->paymentMethod;
     }
 
+    public function getInvoiceNumber()
+    {
+        return $this->invoiceNumber;
+    }
+
     public function setDate($date)
     {
         $this->date = $date;
@@ -142,4 +153,10 @@ class Transaction extends Domain\AbstractModel
     {
         $this->paymentMethod = $paymentMethod;
     }
+
+    public function setInvoiceNumber($invoiceNumber)
+    {
+        $this->invoiceNumber = $this->intValue($invoiceNumber);
+    }
+
 }
