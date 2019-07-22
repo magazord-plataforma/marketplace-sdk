@@ -16,6 +16,12 @@ class TransferTransactionListFilter extends ListFilter
      */
     protected $orderId;
 
+    /**
+     * Descrição
+     * @var string
+     */
+    protected $description;
+
     public function getOrderId()
     {
         return $this->orderId;
@@ -24,6 +30,16 @@ class TransferTransactionListFilter extends ListFilter
     public function setOrderId($orderId)
     {
         $this->orderId = $this->stringValue($orderId);
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = $description;
     }
 
 }
