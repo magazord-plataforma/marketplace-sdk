@@ -61,11 +61,17 @@ class Transfer extends Domain\AbstractModel
     protected $invoice;
 
     /**
+     * @var TransferSummaryItem[]
+     */
+    protected $summary;
+
+    /**
      * Mapeamento de propriedades que sao objetos ou arrays
      * @var array
      */
     protected $_mapper = array(
-        'invoice' => '\\MagaMarketplace\\Domain\\Order\\Invoice'
+        'invoice' => '\\MagaMarketplace\\Domain\\Order\\Invoice',
+        'summary' => '\\MagaMarketplace\\Domain\\Report\\TransferSummaryItem'
     );
 
     public function getId()
@@ -108,6 +114,11 @@ class Transfer extends Domain\AbstractModel
         return $this->invoice;
     }
 
+    public function getSummary()
+    {
+        return $this->summary;
+    }
+
     public function setId($id)
     {
         $this->id = $this->intValue($id);
@@ -146,6 +157,11 @@ class Transfer extends Domain\AbstractModel
     public function setInvoice(Domain\Order\Invoice $invoice = null)
     {
         $this->invoice = $invoice;
+    }
+
+    public function setSummary(array $summary = null)
+    {
+        $this->summary = $summary;
     }
 
 }

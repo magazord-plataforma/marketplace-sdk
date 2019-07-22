@@ -11,6 +11,10 @@
             "type": "string",
             "description": "Número do pedido"
         },
+        "expandSummary": {
+            "type": "boolean",
+            "description": "Identifica se retorna o detalhamento do \"summary\" no Transfer. Padrão: False"
+        },
         "limit": {
             "type": "integer",
             "description": "Quantidade de registros. Padrão: 50",

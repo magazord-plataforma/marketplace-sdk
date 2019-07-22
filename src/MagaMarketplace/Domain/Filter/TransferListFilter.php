@@ -24,6 +24,12 @@ class TransferListFilter extends ListFilter
      */
     protected $orderId;
 
+    /**
+     * Identifica se retorna o detalhamento do "summary" no Transfer. Padrão: False
+     * @var bool
+     */
+    protected $expandSummary;
+
     public function getId()
     {
         return $this->id;
@@ -34,6 +40,11 @@ class TransferListFilter extends ListFilter
         return $this->orderId;
     }
 
+    public function getExpandSummary()
+    {
+        return $this->expandSummary;
+    }
+
     public function setId($id)
     {
         $this->id = $this->intValue($id);
@@ -42,6 +53,11 @@ class TransferListFilter extends ListFilter
     public function setOrderId($orderId)
     {
         $this->orderId = $this->stringValue($orderId);
+    }
+
+    public function setExpandSummary($expandSummary)
+    {
+        $this->expandSummary = $this->boolValue($expandSummary);
     }
 
 }
