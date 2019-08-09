@@ -33,6 +33,14 @@
             "description": "Data/hora de criação inicial",
             "format": "date-time"
         },
+        "beginPriceSale": {
+            "type": "number",
+            "description": "Preço de venda Inicial"
+        },
+        "endPriceSale": {
+            "type": "number",
+            "description": "Preço de venda Final"
+        },
         "expandImages": {
             "type": "boolean",
             "description": "Identifica se retorna o detalhamento do \"images\" no ItemResponse. Padrão: True"

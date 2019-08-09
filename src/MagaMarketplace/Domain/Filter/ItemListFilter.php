@@ -59,6 +59,18 @@ class ItemListFilter extends ListFilter
     protected $dateCreated;
 
     /**
+     * Preço de venda Inicial
+     * @var float
+     */
+    protected $beginPriceSale;
+
+    /**
+     * Preço de venda Final
+     * @var float
+     */
+    protected $endPriceSale;
+
+    /**
      * Identifica se retorna o detalhamento do "images" no ItemResponse. Padrão: True
      * @var bool
      */
@@ -111,6 +123,16 @@ class ItemListFilter extends ListFilter
         return $this->dateCreated;
     }
 
+    public function getBeginPriceSale()
+    {
+        return $this->beginPriceSale;
+    }
+
+    public function getEndPriceSale()
+    {
+        return $this->endPriceSale;
+    }
+
     public function getExpandImages()
     {
         return $this->expandImages;
@@ -159,6 +181,16 @@ class ItemListFilter extends ListFilter
     public function setDateCreated($dateCreated)
     {
         $this->dateCreated = $dateCreated;
+    }
+
+    public function setBeginPriceSale($beginPriceSale)
+    {
+        $this->beginPriceSale = $this->floatValue($beginPriceSale);
+    }
+
+    public function setEndPriceSale($endPriceSale)
+    {
+        $this->endPriceSale = $this->floatValue($endPriceSale);
     }
 
     public function setExpandImages($expandImages)
