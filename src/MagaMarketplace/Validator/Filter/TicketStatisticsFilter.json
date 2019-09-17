@@ -1,0 +1,18 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "TicketStatisticsFilter schema",
+    "properties": {
+        "beginDate": {
+            "type": "string",
+            "description": "Data/hora inicial",
+            "format": "date-time"
+        },
+        "endDate": {
+            "type": "string",
+            "description": "Data/hora final",
+            "format": "date-time"
+        }
+    },
+    "required": []
+}
