@@ -26,7 +26,7 @@ class OrdersPerformance extends Domain\AbstractModel
 
     /**
      * Performance envio
-     * @var OrdersPerformanceItem
+     * @var SellersPerformanceItem
      */
     protected $shipping;
 
@@ -49,7 +49,7 @@ class OrdersPerformance extends Domain\AbstractModel
     protected $_mapper = array(
         'seller' => '\\MagaMarketplace\\Domain\\Seller',
         'cancel' => '\\MagaMarketplace\\Domain\\Report\\OrdersPerformanceItem',
-        'shipping' => '\\MagaMarketplace\\Domain\\Report\\OrdersPerformanceItem',
+        'shipping' => '\\MagaMarketplace\\Domain\\Report\\SellersPerformanceItem',
         'delivery' => '\\MagaMarketplace\\Domain\\Report\\OrdersPerformanceItem',
         'tickets' => '\\MagaMarketplace\\Domain\\Report\\SellersPerformanceItem',
     );
@@ -79,7 +79,7 @@ class OrdersPerformance extends Domain\AbstractModel
         return $this->shipping;
     }
 
-    public function setShipping(OrdersPerformanceItem $shipping = null)
+    public function setShipping(SellersPerformanceItem $shipping = null)
     {
         $this->shipping = $shipping;
     }
