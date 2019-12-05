@@ -116,7 +116,7 @@
         },
         "description": {
             "type": "string",
-            "description": "Descrição detalhada."
+            "description": "Descrição detalhada. Não permite HTML (retirado automaticamente se enviado). Máximo de 3000 caracteres (será cortado automaticamente se enviado mais)"
         },
         "category": {
             "type": "string",

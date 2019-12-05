@@ -76,7 +76,12 @@ class ListFilter extends Domain\AbstractModel
 
     public function setSortDirection($sortDirection)
     {
-        $this->sortDirection = $sortDirection;
+        // As opçoes válidas somente pode ser essas...
+        if ($sortDirection == self::SORT_DIRECTION_ASC || $sortDirection == self::SORT_DIRECTION_DESC) {
+            $this->sortDirection = $sortDirection;
+        } else {
+            $this->sortDirection = null;
+        }
     }
 
 }

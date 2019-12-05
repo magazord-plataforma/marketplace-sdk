@@ -17,6 +17,12 @@ class OrderResponse extends Order
     protected $id;
 
     /**
+     * Código do Lojista
+     * @var int
+     */
+    protected $sellerId;
+
+    /**
      * Tracking do Pedido
      * @var TrackingResponse[]
      */
@@ -44,6 +50,11 @@ class OrderResponse extends Order
         return $this->tracking;
     }
 
+    public function getSellerId()
+    {
+        return $this->sellerId;
+    }
+
     public function setId($id)
     {
         $this->id = $this->stringValue($id);
@@ -59,6 +70,11 @@ class OrderResponse extends Order
         $trackings = ($this->getTracking()) ? $this->getTracking() : array();
         $trackings[] = $tracking;
         $this->setTracking($trackings);
+    }
+
+    public function setSellerId($sellerId)
+    {
+        $this->sellerId = $this->intValue($sellerId);
     }
 
 }

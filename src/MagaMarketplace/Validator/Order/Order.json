@@ -255,7 +255,7 @@
         "shippingService": {
             "type": "string",
             "description": "Opção de envio",
-            "maxLength": 20
+            "maxLength": 50
         },
         "freight": {
             "type": "number",

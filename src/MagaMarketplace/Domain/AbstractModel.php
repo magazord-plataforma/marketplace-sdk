@@ -76,6 +76,8 @@ class AbstractModel
                 continue;
             } else if ($value instanceof AbstractModel) {
                 $value = $value->serialize();
+            } else if ($value instanceof \JsonSerializable) {
+                $value = $value->jsonSerialize();
             } else if (is_array($value)) {
                 $internal = array();
                 foreach ($value as $subProperty => $subValue) {

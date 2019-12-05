@@ -30,7 +30,7 @@ class Seller extends AbstractModel
 
     /**
      * Status
-     * @var string
+     * @var integer
      */
     protected $status;
 
@@ -103,7 +103,7 @@ class Seller extends AbstractModel
 
     public function setStatus($status)
     {
-        $this->status = $status;
+        $this->status = $this->intValue($status);
     }
 
     public function setGroupId($groupId)
