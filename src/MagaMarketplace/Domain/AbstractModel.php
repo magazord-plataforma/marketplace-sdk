@@ -63,7 +63,7 @@ class AbstractModel
     /**
      * Retorna o objeto em formato JSON
      */
-    public function serialize()
+    public function serialize($asArray = false)
     {
         $result = null;
         foreach ($this as $property => $value) {
@@ -75,24 +75,31 @@ class AbstractModel
             if ($value === null) { // Propriedades nulas não envia
                 continue;
             } else if ($value instanceof AbstractModel) {
-                $value = $value->serialize();
+                $value = $value->serialize($asArray);
             } else if ($value instanceof \JsonSerializable) {
                 $value = $value->jsonSerialize();
             } else if (is_array($value)) {
                 $internal = array();
                 foreach ($value as $subProperty => $subValue) {
                     if ($subValue instanceof AbstractModel) {
-                        $internal[$subProperty] = $subValue->serialize();
+                        $internal[$subProperty] = $subValue->serialize($asArray);
                     } else {
                         $internal[$subProperty] = $subValue;
                     }
                 }
                 $value = $internal;
             }
-            if ($result === null) {
-                $result = new \stdClass();
+            if ($asArray) {
+                if ($result === null) {
+                    $result = array();
+                }
+                $result[$property] = $value;
+            } else {
+                if ($result === null) {
+                    $result = new \stdClass();
+                }
+                $result->$property = $value;
             }
-            $result->$property = $value;
         }
         return $result;
     }
