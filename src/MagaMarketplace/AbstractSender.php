@@ -198,7 +198,7 @@ abstract class AbstractSender
             $responseData = $this->responseString;
         }
         if ($responseData) {
-            $this->response->unserialize($responseData);
+            $this->unserializeData($responseData);
         }
     }
 
@@ -281,4 +281,19 @@ abstract class AbstractSender
         $this->responseString = null;
     }
 
+    /**
+     * @param $responseData
+     */
+    protected function unserializeData($responseData)
+    {
+        $this->response->unserialize($responseData);
+    }
+
+    /**
+     * @return \Httpful\Response
+     */
+    public function getResponseHttp()
+    {
+        return $this->responseHttp;
+    }
 }
