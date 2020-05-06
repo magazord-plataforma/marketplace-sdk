@@ -118,6 +118,10 @@
                     "description": "Loja do marketplace",
                     "maxLength": 18
                 },
+                "origin": {
+                    "type": "string",
+                    "description": "Origem do Atendimento"
+                },
                 "messages": {
                     "type": "array",
                     "description": "Mensagens",
@@ -128,6 +132,11 @@
                 "lastUpdate": {
                     "type": "string",
                     "description": "Data/hora última atualização",
+                    "format": "date-time"
+                },
+                "responseDeadline": {
+                    "type": "string",
+                    "description": "Data Limite de Resposta",
                     "format": "date-time"
                 }
             },

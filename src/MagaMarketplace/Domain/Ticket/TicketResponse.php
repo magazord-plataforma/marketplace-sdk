@@ -66,6 +66,12 @@ class TicketResponse extends Domain\AbstractModel
     protected $store;
 
     /**
+     * Origem do Atendimento
+     * @var string
+     */
+    protected $origin;
+
+    /**
      * Mensagens
      * @var MessageResponse[]
      */
@@ -76,6 +82,12 @@ class TicketResponse extends Domain\AbstractModel
      * @var string
      */
     protected $lastUpdate;
+
+    /**
+     * Data Limite de Resposta. Formato: YYYY-MM-DDThh:mm:ss.TZD
+     * @var string
+     */
+    protected $responseDeadline;
 
     /**
      * Mapeamento de propriedades que sao objetos ou arrays
@@ -137,6 +149,11 @@ class TicketResponse extends Domain\AbstractModel
         return $this->store;
     }
 
+    public function getOrigin()
+    {
+        return $this->origin;
+    }
+
     public function getMessages()
     {
         return $this->messages;
@@ -145,6 +162,11 @@ class TicketResponse extends Domain\AbstractModel
     public function getLastUpdate()
     {
         return $this->lastUpdate;
+    }
+
+    public function getResponseDeadline()
+    {
+        return $this->responseDeadline;
     }
 
     public function setId($id)
@@ -187,6 +209,11 @@ class TicketResponse extends Domain\AbstractModel
         $this->store = $store;
     }
 
+    public function setOrigin($origin)
+    {
+        $this->origin = $origin;
+    }
+
     public function setMessages(array $messages = null)
     {
         $this->messages = $messages;
@@ -202,6 +229,11 @@ class TicketResponse extends Domain\AbstractModel
     public function setLastUpdate($lastUpdate)
     {
         $this->lastUpdate = $lastUpdate;
+    }
+
+    public function setResponseDeadline($responseDeadline)
+    {
+        $this->responseDeadline = $responseDeadline;
     }
 
 }

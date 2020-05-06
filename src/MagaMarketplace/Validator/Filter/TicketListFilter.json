@@ -52,7 +52,7 @@
         "sort": {
             "type": "string",
             "description": "Ordenação dos registros",
-            "enum": ["id", "dateCreated", "lastUpdate"]
+            "enum": ["id", "dateCreated", "lastUpdate", "responseDeadline"]
         },
         "sortDirection": {
             "type": "string",

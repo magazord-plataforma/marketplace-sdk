@@ -13,6 +13,7 @@ class TicketListFilter extends ListFilter
     const SORT_ID = 'id';
     const SORT_DATE_CREATED = 'dateCreated';
     const SORT_LAST_UPDATE = 'lastUpdate';
+    const SORT_RESPONSE_DEADLINE = 'responseDeadline';
 
     /**
      * Identificador

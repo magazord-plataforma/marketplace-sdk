@@ -1,0 +1,52 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "dateCreated": {
+            "type": "string",
+            "description": "Data/hora",
+            "format": "date-time"
+        },
+        "type": {
+            "type": "string",
+            "description": "Tipo",
+            "enum": ["box", "popup"]
+        },
+        "title": {
+            "type": "string",
+            "description": "Título",
+            "maxLength": 100
+        },
+        "description": {
+            "type": "string",
+            "description": "Mensagem"
+        },
+        "beginDate": {
+            "type": "string",
+            "description": "Data/hora Ínicio",
+            "format": "date-time"
+        },
+        "endDate": {
+            "type": "string",
+            "description": "Data/hora Fim",
+            "format": "date-time"
+        },
+        "days": {
+            "type": "array",
+            "description": "Dias",
+            "items": {
+                "type": "integer"
+            },
+            "uniqueItems": true
+        },
+        "sellerId": {
+            "type": "array",
+            "description": "Lojistas",
+            "items": {
+                "type": "integer"
+            },
+            "uniqueItems": true
+        }
+    },
+    "required": ["type", "title", "description", "beginDate", "endDate"]
+}
