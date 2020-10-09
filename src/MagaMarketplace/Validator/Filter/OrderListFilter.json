@@ -70,6 +70,11 @@
         "exceededShippingDate": {
             "type": "boolean",
             "description": "Identifica se deve retornar apenas os pedidos com postagem atrasada. Padrão: False"
+        },
+        "latestShipDate": {
+            "type": "string",
+            "description": "Data de Limite de Postagem",
+            "format": "date"
         }
     },
     "required": ["limit", "offset"]

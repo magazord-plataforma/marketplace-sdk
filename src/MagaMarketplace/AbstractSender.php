@@ -81,6 +81,12 @@ abstract class AbstractSender
      */
     private $logger;
 
+    /**
+     * HTTP timeout (em segundos)
+     * @var int
+     */
+    private $timeOut = null;
+
     public function __construct($endpoint, $user, $password)
     {
         $this->setEndpoint($endpoint);
@@ -145,6 +151,9 @@ abstract class AbstractSender
         }
         $this->authenticateClient($http);
         $http->auto_parse = false;
+        if ($this->getTimeOut() !== null) {
+            $http->timeout($this->getTimeOut());
+        }
         if ($body) {
             $this->parseBody($http, $body);
         }
@@ -267,6 +276,16 @@ abstract class AbstractSender
         $this->logger = $logger;
     }
 
+    public function getTimeOut()
+    {
+        return $this->timeOut;
+    }
+
+    public function setTimeOut($timeOut)
+    {
+        $this->timeOut = $timeOut;
+    }
+
     /**
      * Limpar as variáveis
      */
@@ -296,4 +315,5 @@ abstract class AbstractSender
     {
         return $this->responseHttp;
     }
+
 }

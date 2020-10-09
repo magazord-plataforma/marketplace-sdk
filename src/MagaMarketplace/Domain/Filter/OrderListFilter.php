@@ -81,6 +81,12 @@ class OrderListFilter extends ListFilter
      */
     protected $exceededShippingDate;
 
+    /**
+     * Data de Limite de Postagem. Formato: YYYY-MM-DD
+     * @var string
+     */
+    protected $latestShipDate;
+
     public function getId()
     {
         return $this->id;
@@ -134,6 +140,11 @@ class OrderListFilter extends ListFilter
     public function getExceededShippingDate()
     {
         return $this->exceededShippingDate;
+    }
+
+    public function getLatestShipDate()
+    {
+        return $this->latestShipDate;
     }
 
     public function setId($id)
@@ -191,4 +202,8 @@ class OrderListFilter extends ListFilter
         $this->exceededShippingDate = $this->boolValue($exceededShippingDate);
     }
 
+    public function setLatestShipDate($latestShipDate)
+    {
+        $this->latestShipDate = $this->stringValue($latestShipDate);
+    }
 }

@@ -39,7 +39,7 @@ class Validator
     static private function getErrorDetail(array $error)
     {
         $message = $error['message'];
-        if ($error['constraint'] == 'required') {
+        if ($error['constraint'] == 'required' || $error['message'] == 'NULL value found, but an object is required') {
             $message = 'O atributo e obrigatorio';
         } else if ($error['constraint'] == 'minLength') {
             $message = 'O atributo deve conter no minimo ' . $error['minLength'] . ' caracteres';
