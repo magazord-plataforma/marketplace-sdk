@@ -14,6 +14,7 @@ class OrderPayment extends Domain\AbstractModel
 
     const METHOD_BOLETO = 'Boleto';
     const METHOD_TRANSFERENCIA = 'Transferencia';
+    const METHOD_PIX = 'Pix';
     const METHOD_MASTERCARD = 'Mastercard';
     const METHOD_VISA = 'Visa';
     const METHOD_DINERS = 'Diners';
